@@ -1,0 +1,77 @@
+
+.register{
+    background-color: #4057A9;
+    justify-content: center;
+    align-items: center;
+    
+    margin: auto;
+    width: 50%;
+    height: 100vh;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    
+    padding: 10px;
+    margin-top: 1rem;
+    
+    
+}
+.inputs{
+    display: flex;
+    justify-content: space-evenly;
+}
+.reg{
+    padding-top: 3rem;
+}
+.pass{
+    padding-top: 3rem; 
+}
+.signup{
+    display: flex;
+    justify-content: space-evenly;
+
+    padding-top: 3rem;
+}
+.fields{
+    display: flex;
+    justify-content: space-evenly;
+
+}.email{
+    margin-left: 2rem;
+}
+
+.inputs input{
+    width: 150px;
+    border-radius: 15px;
+    padding: 7px;
+}
+
+.pass input{
+    width: 100%;
+    border-radius: 15px;
+    padding: 7px;
+}
+
+.reg-btn{
+    background-color: #D0504F;
+    padding: 8px;
+    border-radius: 5px;
+}
+a{
+    color:#D0504F;
+    font-weight: bold;
+    
+}
+
+button{
+    background-color: #fff;
+    padding: 5px;
+}
+
+img{
+    padding-right: 1rem;
+}
+
+.reg-image{
+    padding-top: 2rem;
+}

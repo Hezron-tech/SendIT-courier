@@ -1,0 +1,29 @@
+
+
+.navbar{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    background-color:#4057A9;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    /* justify-content: space-evenly; */
+    gap: 3rem;
+}
+
+li{
+    color: white;
+}
+.started{
+    color: white;
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 15px;
+    background-color: #FA393D;
+    box-shadow: none;
+    border: none;
+}
+

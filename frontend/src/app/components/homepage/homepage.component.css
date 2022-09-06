@@ -1,0 +1,117 @@
+.section{
+    background-color:#4057A9;
+}
+.para{
+    color: white;
+    font-size: 40px;
+}
+
+.section{
+    display: flex;
+    justify-content: space-between;
+
+    padding-left: 4rem;
+}
+
+.reviews{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+}
+.cart{
+    display: flex;
+    text-align: center;
+}
+.desc{
+    padding-top: 1rem;
+}
+
+.services{
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.star{
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    color: white;
+    gap: 2rem;
+}
+
+.star-one{
+    padding: 30px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: #4057A9
+}
+
+.star-one img{
+    padding-bottom: 1rem;
+}
+
+.about{
+   text-align: center;
+
+    margin-top: 1rem;
+    
+}
+h1{
+    text-align: center;
+}
+
+.story{
+    color: #FA393D;
+}
+.touch{
+    
+    display: flex;
+    justify-content: space-evenly;
+   
+    font-size: 20px;
+}
+
+input{
+    border-radius: 5px;
+    width: auto;
+}
+
+.name{
+    display: flex;
+}
+
+.contact-form{
+    background-color: #4057A9;
+    color: white;
+    
+}
+
+.email{
+    width: 100%;
+}
+.text{
+    flex-wrap: wrap;
+}
+
+textarea{
+    width: 100%;
+    border-radius: 5px;
+}
+footer{
+    margin-top: 2rem;
+    text-align: center;
+    color: white;
+    background-color: #2E5C64;
+}
+
+.send{
+    margin-top: 2rem;
+    width: 100%;
+    border-radius: 15px;
+    background-color: #FA393D;
+    color: #fff;
+}
+h2{
+    color: #FA393D ;
+}
