@@ -1,0 +1,65 @@
+.user{
+    margin: auto;
+    width: 900px;
+}
+
+  table{
+    background-color: antiquewhite;
+    margin-top: 1rem;
+  }
+
+  th{
+    background-color: #0b7dda;
+    color: #fff;
+    border: 2px solid black;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  td{
+    text-align: center;
+    border: 1px solid black;
+  }
+
+  .view-button{
+    border: none;
+    background-color: red;
+    border-radius: 15px;
+    color: white;
+  }
+
+  .pagination {
+    display: inline-block;
+   padding-top: 6rem;
+   text-align: center;
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  .sent{
+    padding-top: 4rem;
+  }
+
+  .received{
+    padding-top: 4rem;
+  }
+  h1{
+    padding-bottom: 2rem;
+  }
+  .head{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+  }
+
+  .log{
+    width: 150px;
+    color: #fff;
+    padding: 0;
+    border-radius: 15px;
+    background-color: red;
+  }

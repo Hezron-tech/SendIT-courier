@@ -5,7 +5,8 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { CreateOrdersComponent } from './create-orders/create-orders.component';
 import { AllOrdersComponent } from './all-orders/all-orders.component';
 import { ViewOrderComponent } from './view-order/view-order.component';
-import { UpdateOrderComponent } from './update-order/update-order.component';
+
+import { StatusOrderComponent } from './status-order/status-order.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { UpdateOrderComponent } from './update-order/update-order.component';
     CreateOrdersComponent,
     AllOrdersComponent,
     ViewOrderComponent,
-    UpdateOrderComponent
+    
+    StatusOrderComponent
   ],
   imports: [
     CommonModule,

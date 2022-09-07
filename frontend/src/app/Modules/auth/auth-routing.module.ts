@@ -4,8 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
+  {path:'',children:[
   {path:'login', component: LoginComponent},
   {path:'register', component: RegistrationComponent}
+]}
 
 ];
 

@@ -1,4 +1,5 @@
-import { UpdateOrderComponent } from './update-order/update-order.component';
+import { StatusOrderComponent } from './status-order/status-order.component';
+
 import { ViewOrderComponent } from './view-order/view-order.component';
 import { AllOrdersComponent } from './all-orders/all-orders.component';
 import { CreateOrdersComponent } from './create-orders/create-orders.component';
@@ -9,7 +10,8 @@ const routes: Routes = [
   {path:'create', component:CreateOrdersComponent},
   {path:'all', component:AllOrdersComponent},
   {path:'view',component:ViewOrderComponent},
-  {path: 'update',component:UpdateOrderComponent}
+ 
+  {path: 'status',component:StatusOrderComponent}
 ];
 
 @NgModule({
