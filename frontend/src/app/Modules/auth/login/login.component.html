@@ -7,19 +7,25 @@
 
     <div class="login-section">
 
-       <form>
+       <form #form ="ngForm" (ngSubmit)="onSubmit()">
         <div class="login-details">
 
-            <p>Email</p>
-            <input type="email">
+            <div class="form-control">
+                <p>Email</p>
+                <input type="email" ngModel name="email" required email #email="ngModel">
+                <p class="error" *ngIf="!email.valid && email.touched"> *Please enter valid email!!</p>
+                <!-- <p class="error" *ngIf="!email.valid && email.touched>*Please enter valid email!!</p> -->
+            </div>
 
-            <p>Password</p>
+            <div class="form-control">
+                <p>Password</p>
+                <input type="password" ngModel name="password" required>
+               
+            </div>
 
-            <input type="password"> <br> <pre></pre>
+            <button type="submit">Sign In</button>
 
-            <button>Sign In</button>
-
-            <p>Don't have account??.<a href="">Sign Up</a> </p>
+            <p>Don't have account??.<a href="auth/register">Sign Up</a> </p>
 
             
 

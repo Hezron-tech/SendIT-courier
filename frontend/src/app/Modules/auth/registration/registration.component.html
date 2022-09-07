@@ -13,24 +13,50 @@
 <div class="fields">
   <div class="reg">
    
-        <form class="inputs">
+        <form class="inputs" [formGroup]="addForms" (ngSubmit)="addUser()">
 
+           <div class="form1">
             <div class="username">
                 <p>Username</p>
-                <input type="text">
+                <input type="text" formControlName="username" name="username" placeholder="Enter your username" >
+                <div *ngIf="!addForms.get('username')!.valid && addForms.get('username')!.touched">
+                    <p class="error" *ngIf="addForms.get('username')!.errors!['required']">
+                      *Name is required.
+                    </p>
+                  </div>
             </div>
     
             <div class="email">
                 <p>Email</p>
-                <input type="email">
+             
+             
+                <input type="email" formControlName="email" placeholder="Enter your email">
+                <div *ngIf="!addForms.get('email')!.valid && addForms.get('email')!.touched">
+                  <p class="error" *ngIf="addForms.get('email')!.errors!['required']">
+                    *email is required.
+                  </p>
+                </div>
             </div>
+            
+            
+           </div>
         
     
         <div class="pass">
             <p>Password</p>
-            <input type="password">
+            <input type="password" formControlName="password" placeholder="Enter your password">
+
+            <div *ngIf="!addForms.get('password')!.valid && addForms.get('password')!.touched">
+                <p class="error" *ngIf="addForms.get('password')!.errors!['special']">
+                  *password special character is required.
+                </p>
+              </div>
         </div>
+
+        <button type="submit" class="reg-btn">Register</button>
         </form>
+
+        <p class="para">Allready Register? Sign In here <a href="auth/login">Login</a> </p>
   </div>
 
   <div class="reg-image">
@@ -39,14 +65,10 @@
 
 </div>
 
-<input type="checkbox" id="vehicle3" name="vehicle3">
-
-<p for="vehicle3"> I've read and agreed with terms of services <br> our privacy policy</p><br><br>
-
-<button class="reg-btn">Register</button>
 
 
-<p>Allready Register? Sign In here <a href="">Login</a> </p>
+
+
 
 
 

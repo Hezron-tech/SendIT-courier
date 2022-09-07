@@ -4,8 +4,12 @@
 }
 
 .log{
+
+  margin-top: 3rem;
     width: 100px;
     border-radius: 15px;
+    background-color: #237DDB;
+    color: white;
 }
 .se{
     padding-top: 2rem;
@@ -22,20 +26,24 @@
     
     height: 400px;
     width: 300px;
-    background-color: bisque;
+    background-color: #9497A2;
     border-radius: 5px;
 }
 
 .all{
-    margin-top: 2rem;
+    margin-top: 3rem;
     background-color: white;
     font-weight: bold;
+    padding: 10px;
+    border-radius: 15px;
 }
 
 .new{
-    margin-top: 2rem;
+    margin-top: 3rem;
     background-color: white;
     font-weight: bold;
+    padding: 10px;
+    border-radius: 15px;
 }
 .delivered{
     margin-top: 2rem;  
@@ -47,13 +55,14 @@ form.search input[type=text] {
     font-size: 17px;
     border: 1px solid grey;
     float: left;
-    width: 80%;
+    width: 70%;
     background: #f1f1f1;
+
   }
   
   form.search button {
     float: left;
-    width: 20%;
+    width: 30%;
     padding: 10px;
     background: #2196F3;
     color: white;
@@ -61,6 +70,7 @@ form.search input[type=text] {
     border: 1px solid grey;
     border-left: none;
     cursor: pointer;
+    border-radius: 15px
   }
   
   form.search button:hover {
@@ -71,6 +81,9 @@ form.search input[type=text] {
     content: "";
     clear: both;
     display: table;
+  }
+  form.search input{
+    border-radius: 15px;
   }
 
   table{
@@ -100,7 +113,7 @@ form.search input[type=text] {
 
   .pagination {
     display: inline-block;
-   padding-top: 6rem;
+   padding-top: 4rem;
    text-align: center;
   }
   
@@ -109,4 +122,46 @@ form.search input[type=text] {
     float: left;
     padding: 8px 16px;
     text-decoration: none;
+  }
+
+  .pending{
+    color: red;
+  }
+
+  .delivered{
+    color: green;
+  }
+
+  .dash{
+    display: flex;
+    margin-bottom: 2rem;
+    padding: 2rem;
+  }
+
+  .dash-one{
+    box-sizing: border-box;
+    background-color: #7BC4B2;
+    width: 300px;
+    height: 150px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .dash-two{
+    box-sizing: border-box;
+    background-color: #FCC739;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 1rem;
+  }
+  .dash-three{
+    box-sizing: border-box;
+    background-color: #F1686C;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 1rem;
+  }
+  h2{
+    color: white;
   }

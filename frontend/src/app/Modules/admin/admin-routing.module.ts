@@ -7,11 +7,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path:'create', component:CreateOrdersComponent},
-  {path:'all', component:AllOrdersComponent},
-  {path:'view',component:ViewOrderComponent},
- 
-  {path: 'status',component:StatusOrderComponent}
+
+  {path:'', children:[
+    
+    {path:'create', component:CreateOrdersComponent},
+    {path:'all', component:AllOrdersComponent},
+    {path:'view',component:ViewOrderComponent},
+   
+    {path: 'status',component:StatusOrderComponent}
+  ] 
+  
+  }
 ];
 
 @NgModule({

@@ -3,7 +3,7 @@
 
     <div class="se">
         <h1>Welcome Admin</h1>
-        <button class="log">LogOut</button>
+       
     </div>
 
 
@@ -12,26 +12,48 @@
     <div class="view-one">
 
         <button class="all">All Orders</button> <br> 
-        <button class="new">Create new Order</button> <br>
+        <button (click)="create()" class="new">Create new Order</button> <br>
+        <button class="log">LogOut</button>
 
-        <button class="delivered">Status</button>
+        
 
     </div>
 
     <div class="view-two">
+      <form class="search" style="margin:auto;max-width:300px">
+        <input type="text" placeholder="Search" name="search2">
+        <button type="submit">Search</button>
+      </form>
 
-        <form class="search" style="margin:auto;max-width:300px">
-            <input type="text" placeholder="Search your package name" name="search2">
-            <button type="submit">Search</button>
-          </form>
 
-          <table style="width:100%">
+      <div class="dash">
+        <div class="dash-one">
+
+          <h2>Delivered</h2>
+
+          <p>300K</p>
+          <P>PARCELS</P>
+
+        </div>
+        <div class="dash-two">
+          <h2>pending</h2>
+          <p>30</p>
+          <P>PARCELS</P>
+        </div>
+        <div class="dash-three">
+          <h2>clients</h2>
+          <p>30K</p>
+          <P>Users</P>
+        </div>
+      </div>
+<table style="width:100%">
             <tr>
               <th>Package Name</th>
               <th>Package Id</th>
               <th>Destination</th>
               <th>Sender</th>
               <th>Receiver</th>
+              <th>Status</th>
               <th>Price</th>
               <th>Weight</th>
               <th>date</th>
@@ -44,15 +66,28 @@
               <td>Germany</td>
               <td>Alfreds</td>
               <td>Anders</td>
+              <td class="pending">Pending</td>
               <td>ksh.2000</td>
               <td>2kg</td>
               <td>12/02/2022</td>
-              <td><button class="view-button">View Details</button></td>
+              <td><button  (click)="viewDetails()" class="view-button">View Details</button></td>
             </tr>
             <tr>
-              
-            </tr> 
+              <td>Futterkiste</td>
+              <td>A100</td>
+              <td>Germany</td>
+              <td>Alfreds</td>
+              <td>Anders</td>
+              <td class="delivered">Delivered</td>
+              <td>ksh.2000</td>
+              <td>2kg</td>
+              <td>12/02/2022</td>
+              <td><button (click)="viewDetails()"class="view-button">View Details</button></td>
+            </tr>
+           
             </table>
+
+            <router-outlet></router-outlet>
 
 
 
@@ -79,7 +114,9 @@
 
 
 
-</div>    
+</div>   
+
+
 
 
 

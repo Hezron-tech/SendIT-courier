@@ -53,3 +53,18 @@ button{
 a{
     color: red;
 }
+
+.form-control{
+    border: none;
+    background-color: #4057A9;
+}
+
+.error{
+    color: red;
+}
+ input.ng-invalid.ng-touched{
+    border:2px solid red ;
+}
+input.ng-valid.ng-touched{
+    border:2px solid green ;
+}

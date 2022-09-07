@@ -1,0 +1,28 @@
+.content{
+    box-sizing: border-box;
+
+    background-color: blueviolet;
+    height: 500px;
+    width: 400px;
+    margin: auto;
+    margin-top: 2rem;
+    
+}
+
+h2{
+    text-align: center;
+    color: white;
+    padding-top: 1rem;
+}
+
+
+p{
+    color: white;
+    font-size: 20px;
+    padding-left: 2rem;
+}
+
+.user{
+    margin-top: 2rem;
+    margin-left: 2rem;
+}

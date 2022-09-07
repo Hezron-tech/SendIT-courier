@@ -1,23 +1,30 @@
 
 .register{
-    background-color: #4057A9;
+    background-color: #9497a1;
     justify-content: center;
     align-items: center;
     
     margin: auto;
-    width: 50%;
+   width: auto;
     height: 100vh;
     border-radius: 5px;
     color: #fff;
     font-weight: bold;
     
     padding: 10px;
-    margin-top: 1rem;
+    padding-top: 1rem;
     
     
 }
-.inputs{
+h4{
+    text-align: center;
+}
+
+.form1{
     display: flex;
+}
+.inputs{
+    
     justify-content: space-evenly;
 }
 .reg{
@@ -56,6 +63,9 @@
     background-color: #D0504F;
     padding: 8px;
     border-radius: 5px;
+    color:white;
+    margin-top: 2rem;
+    
 }
 a{
     color:#D0504F;
@@ -74,4 +84,19 @@ img{
 
 .reg-image{
     padding-top: 2rem;
+}
+
+.error{
+    color: red;
+}
+ input.ng-invalid.ng-touched{
+    border-left:5px solid red ;
+}
+input.ng-valid.ng-touched{
+    border-left:5px solid green ;
+}
+
+.para{
+    text-align: center;
+    padding-top: 1rem;
 }
