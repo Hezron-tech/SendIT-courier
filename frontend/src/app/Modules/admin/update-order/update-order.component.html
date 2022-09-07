@@ -1,0 +1,81 @@
+
+<div class="main">
+
+    <form>
+      
+     
+      
+       <!-- </div> -->
+<div class="form-status">
+    <div class="left-part">
+        <div class="form-control">
+            <p>Package Name</p>
+          <input  type="text" formControlName="name" name="name" >
+    
+         <!-- <div *ngIf="!projectForms.get('name')!.valid && projectForms.get('name')!.touched"> -->
+          <!-- <p class="error" *ngIf="projectForms.get('name')!.errors!['required']"> -->
+            <!-- *Title is required. -->
+          <!-- </p>  -->
+        </div>
+        <div class="form-control">
+            <p>Package Id</p>
+            <input  type="text" formControlName="id" name="id" >
+           
+        </div>
+       <div class="form-control">
+            <p>Sender</p>
+            <input  type="text" formControlName="sender" name="sender" >
+           
+        </div>
+        <div class="form-control">
+            <p>Receiver</p>
+            <input  type="text" formControlName="receiver" name="receiver" >
+           
+        </div>
+        
+    </div>
+    
+    
+      <div class="right-part">
+        <div class="form-control">
+            <p>Price</p>
+            <input  type="text" formControlName="price" name="price" >
+           
+        </div>
+        <div class="form-control">
+            <p>Weight</p>
+            <input  type="text" formControlName="weight" name="weight" >
+           
+        </div>
+    
+        <div class="form-control">
+            <p>Date Delivered</p>
+            <input class="date" type="date" formControlName="date" name="date"/>
+        </div>
+    
+        <div class="form-control">
+          <p for="">Status</p>
+          <select formControlName="user_id">
+            <option>Delivered</option>
+            <option>On transit</option>
+          </select>
+         
+        </div> 
+      </div>
+</div>
+
+
+    <button class="sub" type="submit">Update status</button>
+
+
+
+
+
+
+    </form>
+
+
+
+
+
+</div>
