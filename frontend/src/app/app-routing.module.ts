@@ -6,6 +6,8 @@ const routes: Routes = [
   {path:'',component:HomepageComponent},
   { path: 'auth', loadChildren: () => import('./Modules/auth/auth.module').then(m=>m.AuthModule)},
 
+  {path:'admin',loadChildren:() => import ('./Modules/admin/admin.module').then(m=>m.AdminModule)},
+
   
 ];
 

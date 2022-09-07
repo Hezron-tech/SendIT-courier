@@ -1,0 +1,50 @@
+/* .create-orders{
+  
+} */
+.create-orders{
+    display: flex;
+    justify-content: center;
+}
+
+.create{
+    background-color: #FA393D;
+    width: 200px;
+    color: #fff;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    
+   
+}
+
+.admin{
+    background-color:rgb(100, 83, 56);
+    padding: 2rem;
+    
+}
+
+form{
+    background-color: #fff;
+    width: 600px;
+    padding: 10px;
+    border-radius: 3px;
+    justify-content: space-between;
+    
+}
+
+.se{
+    display: flex;
+    justify-content: space-between;
+}
+
+.log{
+    width: 100px;
+    border-radius: 15px;
+}
+
+.display{
+    display: flex;
+}
+
+.form-two{
+    margin-left: 2rem;
+}
