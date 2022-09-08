@@ -7,6 +7,9 @@ import { AllOrdersComponent } from './all-orders/all-orders.component';
 import { ViewOrderComponent } from './view-order/view-order.component';
 
 import { StatusOrderComponent } from './status-order/status-order.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchPipe } from 'src/app/Pipes/search.pipe';
+
 
 
 @NgModule({
@@ -14,12 +17,15 @@ import { StatusOrderComponent } from './status-order/status-order.component';
     CreateOrdersComponent,
     AllOrdersComponent,
     ViewOrderComponent,
-    
+    SearchPipe,
     StatusOrderComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+   
   ]
 })
 export class AdminModule { }

@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -13,15 +15,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     HomepageComponent,
-    NavbarComponent
+    NavbarComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
-   
-    NgbModule
+    SharedModule,
+    NgbModule,
+    HttpClientModule
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
