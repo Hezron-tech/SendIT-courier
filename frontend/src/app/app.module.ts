@@ -8,6 +8,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { OrderReducer } from './Redux/Reducers/orderReducer';
+import { OrderEffectsService } from './Redux/Effects/order-effects.service';
+
 
 
 
@@ -23,7 +31,12 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     SharedModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule,
+    StoreModule.forRoot({order:OrderReducer}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([OrderEffectsService]),
+    
   ],
   
   providers: [],

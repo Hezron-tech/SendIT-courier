@@ -1,9 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Pipe } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { catchError, Observable, of } from 'rxjs';
 import { Orders } from 'src/app/Interface/order';
+import { getOrders } from 'src/app/Redux/Reducers/orderReducer';
 import { OrderService } from 'src/app/Services/order.service';
+import * as Actions from '../../../Redux/Actions/orderActions'
 
 @Component({
   selector: 'app-all-orders',
@@ -12,14 +15,16 @@ import { OrderService } from 'src/app/Services/order.service';
 })
 export class AllOrdersComponent implements OnInit {
 
-  orders$: Observable<Orders[]> = new Observable();
+  orders$=this.store.select(getOrders)
+  
+  
   
   errorMessage: string = "";
   filterText:string=''
 
   
 
-  constructor(private router:Router, private orders:OrderService,private fb:FormBuilder) { 
+  constructor(private router:Router, private orders:OrderService,private fb:FormBuilder, private store:Store) { 
   }
 
   ngOnInit(): void {
@@ -28,18 +33,10 @@ export class AllOrdersComponent implements OnInit {
 
 
   loadOrders(){
-    this.orders$ =this.orders.getOrders().pipe(
-      catchError(error =>{
-        console.log(error);
-
-        console.log(this.orders$);
-        
-        this.errorMessage=error.message
-
-        return of([])
-        
-      })
-    );
+    
+      this.store.dispatch(Actions.LoadOrders())  
+    
+    
 
   }
 
@@ -49,6 +46,13 @@ this.router.navigate(['admin/create'])
   }
   viewDetails(){
     this.router.navigate(['admin/view'])
+
+  }
+
+  DeleteDetails(id:number=0){
+
+    this.store.dispatch(Actions.DeleteOrder({id}))
+    this.store.dispatch(Actions.LoadOrders())
 
   }
 

@@ -5,10 +5,11 @@ import { AllOrdersComponent } from './all-orders/all-orders.component';
 import { CreateOrdersComponent } from './create-orders/create-orders.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GuardGuard } from 'src/app/Guards/guard.guard';
 
 const routes: Routes = [
 
-  {path:'', children:[
+  {path:'', canActivate:[GuardGuard] , children:[
     
     {path:'create', component:CreateOrdersComponent},
     {path:'all', component:AllOrdersComponent},

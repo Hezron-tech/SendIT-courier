@@ -1,49 +1,52 @@
 {
-    "parcels":[
-        {
-            "name":"machine",
-            "packageId":"K100A",
-            "destination":"Nairobi",
-            "sender":"hezzy@gmail.com",
-            "receiver":"hezzy@gmail.com",
-            "price":2000,
-            "status":"pending",
-            "weight":"kG20",
-            "date":"22/02/2022"
-          },
-      {
-        "name":"laptop",
-        "packageId":"K100A",
-        "destination":"Nairobi",
-        "sender":"hezzy@gmail.com",
-        "receiver":"hezzy@gmail.com",
-        "price":2000,
-        "status":"delivered",
-        "weight":"kG20",
-        "date":"22/02/2022"
-      } ,
-      {
-        "name":"Acer",
-        "packageId":"K100A",
-        "destination":"Nairobi",
-        "sender":"hezzy@gmail.com",
-        "receiver":"hezzy@gmail.com",
-        "price":2000,
-        "status":"pending",
-        "weight":"kG20",
-        "date":"22/02/2022"
-      },
-      {
-        "name":"Dog",
-        "packageId":"K100A",
-        "destination":"Nairobi",
-        "sender":"hezzy@gmail.com",
-        "receiver":"hezzy@gmail.com",
-        "price":2000,
-        "status":"delivered",
-        "weight":"kG20",
-        "date":"22/02/2022"
-      }
-       
-    ]
+  "parcels": [
+    {
+      "name": "laptop",
+      "packageId": "K100A",
+      "destination": "Nairobi",
+      "sender": "hezzy@gmail.com",
+      "receiver": "hezzy@gmail.com",
+      "price": 2000,
+      "status": "delivered",
+      "weight": "kG20",
+      "date": "22/02/2022",
+      "id": 1
+    },
+    {
+      "name": "laptop",
+      "packageId": "K100A",
+      "destination": "Nairobi",
+      "sender": "hezzy@gmail.com",
+      "receiver": "hezzy@gmail.com",
+      "price": 2000,
+      "status": "pending",
+      "weight": "kG20",
+      "date": "22/02/2022",
+      "id": 2
+    },
+    {
+      "name": "Acer",
+      "packageId": "K100A",
+      "destination": "Nairobi",
+      "sender": "hezzy@gmail.com",
+      "receiver": "hezzy@gmail.com",
+      "price": 2000,
+      "status": "delivered",
+      "weight": "kG20",
+      "date": "22/02/2022",
+      "id": 4
+    },
+    {
+      "name": "machine",
+      "packageId": "K100A",
+      "destination": "Nairobi",
+      "sender": "hezzy@gmail.com",
+      "receiver": "hezzy@gmail.com",
+      "price": 2000,
+      "status": "delivered",
+      "weight": "kG20",
+      "date": "22/02/2022",
+      "id": 5
+    }
+  ]
 }

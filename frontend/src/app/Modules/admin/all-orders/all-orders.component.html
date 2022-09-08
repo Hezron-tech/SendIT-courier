@@ -57,6 +57,7 @@
           <th>Weight</th>
           <th>date</th>
           <th> Details</th>
+          <th>Actions</th>
 
         </tr>
         <tr *ngFor="let order of orders |search: filterText">
@@ -70,6 +71,7 @@
           <td>{{order.weight}}</td>
           <td>{{order.date}}</td>
           <td><button (click)="viewDetails()" class="view-button">View Details</button></td>
+          <td><button (click)="DeleteDetails(order.id)" class="view-button">Delete</button></td>
         </tr>
 
 
