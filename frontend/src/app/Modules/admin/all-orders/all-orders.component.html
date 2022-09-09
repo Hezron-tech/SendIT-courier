@@ -60,7 +60,7 @@
           <th>Actions</th>
 
         </tr>
-        <tr *ngFor="let order of orders |search: filterText">
+        <tr *ngFor="let order of orders |search: filterText | paginate:{itemsPerPage:3,currentPage:p};">
           <td>{{order.packageName}}</td>
           <td>{{order.packageId}}</td>
           <td>{{order.destination}}</td>
@@ -74,14 +74,17 @@
           <td><button (click)="DeleteDetails(order.id)" class="view-button">Delete</button></td>
         </tr>
 
+        <pagination-controls (pageChange)="p =$event"></pagination-controls>
 
       </table>
+
+     
 
       <router-outlet></router-outlet>
 
 
 
-      <div class="pagination">
+      <!-- <div class="pagination">
         <div class="pagination">
           <a href="#">&laquo;</a>
           <a href="#">1</a>
@@ -92,7 +95,7 @@
           <a href="#">6</a>
           <a href="#">&raquo;</a>
         </div>
-      </div>
+      </div> -->
 
 
     </div>

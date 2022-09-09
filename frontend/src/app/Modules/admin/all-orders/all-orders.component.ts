@@ -17,7 +17,7 @@ export class AllOrdersComponent implements OnInit {
 
   orders$=this.store.select(getOrders)
   
-  
+  p:number =1;
   
   errorMessage: string = "";
   filterText:string=''

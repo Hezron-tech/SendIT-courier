@@ -9,6 +9,7 @@ import { ViewOrderComponent } from './view-order/view-order.component';
 import { StatusOrderComponent } from './status-order/status-order.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchPipe } from 'src/app/Pipes/search.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -25,6 +26,7 @@ import { SearchPipe } from 'src/app/Pipes/search.pipe';
     AdminRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxPaginationModule
    
   ]
 })
