@@ -21,6 +21,16 @@ export class OrderEffectsService {
       ))
     )
   })
+  addOrder=createEffect(()=>{
+    return this.actions.pipe(
+        ofType(OrdersAction.AddOrder),
+        mergeMap(action=>this.orderService.createOrder(action.newOrder).pipe(
+            map(res=>OrdersAction.AddOrderSuccess({addMessage:res.message})),
+            catchError(error=>of(OrdersAction.AddOrderFailure({error:error})))
+        ))
+    )
+})
+
 
   deleteOrder = createEffect(()=>{
     return this.actions.pipe(

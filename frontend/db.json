@@ -1,52 +1,26 @@
 {
   "parcels": [
     {
-      "name": "laptop",
-      "packageId": "K100A",
-      "destination": "Nairobi",
-      "sender": "hezzy@gmail.com",
-      "receiver": "hezzy@gmail.com",
-      "price": 2000,
-      "status": "delivered",
-      "weight": "kG20",
-      "date": "22/02/2022",
-      "id": 1
+      "packageName": "wertyui",
+      "packageId": "wertyuio",
+      "destination": "wertyuio",
+      "sender": "wertyui",
+      "receiver": "wertyuik",
+      "price": "wertyui",
+      "weight": "h4",
+      "date": "2022-09-14",
+      "id": 6
     },
     {
-      "name": "laptop",
-      "packageId": "K100A",
-      "destination": "Nairobi",
-      "sender": "hezzy@gmail.com",
-      "receiver": "hezzy@gmail.com",
-      "price": 2000,
-      "status": "pending",
-      "weight": "kG20",
-      "date": "22/02/2022",
-      "id": 2
-    },
-    {
-      "name": "Acer",
-      "packageId": "K100A",
-      "destination": "Nairobi",
-      "sender": "hezzy@gmail.com",
-      "receiver": "hezzy@gmail.com",
-      "price": 2000,
-      "status": "delivered",
-      "weight": "kG20",
-      "date": "22/02/2022",
-      "id": 4
-    },
-    {
-      "name": "machine",
-      "packageId": "K100A",
-      "destination": "Nairobi",
-      "sender": "hezzy@gmail.com",
-      "receiver": "hezzy@gmail.com",
-      "price": 2000,
-      "status": "delivered",
-      "weight": "kG20",
-      "date": "22/02/2022",
-      "id": 5
+      "packageName": "qwertyui",
+      "packageId": "wertyuik",
+      "destination": "qwertyujik",
+      "sender": "qwertyui",
+      "receiver": "qwertyu",
+      "price": "wertyujikl",
+      "weight": "wertyui",
+      "date": "2022-09-30",
+      "id": 7
     }
   ]
 }

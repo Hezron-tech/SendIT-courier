@@ -18,9 +18,15 @@ baseurl='http://localhost:3000'
     return this.http.get<Orders[]>(`${this.baseurl}/parcels`)
   }
 
+  
 
-  createOrder(order: Orders) {
-    return this.http.post(`${this.baseurl}parcels`, order)
+  getOrderDetails(id:number): Observable<Orders[]>{
+    return this.http.get<Orders[]>(`${this.baseurl}/orders/${id}`)
+  }
+
+
+  createOrder(order:Orders): Observable<{message:string}>{
+    return this.http.post<{message:string}> (`${this.baseurl}/parcels/`,order)
   }
 
 

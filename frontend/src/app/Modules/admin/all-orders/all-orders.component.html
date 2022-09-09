@@ -52,25 +52,25 @@
           <th>Destination</th>
           <th>Sender</th>
           <th>Receiver</th>
-          <th>Status</th>
           <th>Price</th>
           <th>Weight</th>
           <th>date</th>
+          <th>Status</th>
           <th> Details</th>
           <th>Actions</th>
 
         </tr>
         <tr *ngFor="let order of orders |search: filterText">
-          <td>{{order.name}}</td>
+          <td>{{order.packageName}}</td>
           <td>{{order.packageId}}</td>
           <td>{{order.destination}}</td>
           <td>{{order.sender}}</td>
           <td>{{order.receiver}}</td>
-          <td class="pending">{{order.status}}</td>
           <td>{{order.price}}</td>
           <td>{{order.weight}}</td>
           <td>{{order.date}}</td>
-          <td><button (click)="viewDetails()" class="view-button">View Details</button></td>
+          <td class="pending">{{order.status}}</td>
+          <td><button (click)="viewDetails(order.id)" class="view-button">View Details</button></td>
           <td><button (click)="DeleteDetails(order.id)" class="view-button">Delete</button></td>
         </tr>
 

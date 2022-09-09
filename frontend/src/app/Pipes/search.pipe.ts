@@ -11,7 +11,7 @@ export class SearchPipe implements PipeTransform {
     }
     const filtered:Orders[]=[]
       for(let stud of value){
-        if(stud.name.toLocaleLowerCase().indexOf(filterText.toLocaleLowerCase())!==-1){
+        if(stud.packageName.toLocaleLowerCase().indexOf(filterText.toLocaleLowerCase())!==-1){
           filtered.push(stud)
         }
       }

@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-evenly;
     text-align: center;
-    background-color:#4057A9;
+    background-color:#7BC4B2;
 }
 
 ul{
@@ -15,7 +15,8 @@ ul{
 }
 
 li{
-    color: white;
+    color: black;
+    font-size: 20px;
 }
 .started{
     color: white;

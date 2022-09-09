@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+
+import * as Actions from '../../../Redux/Actions/orderActions'
 
 @Component({
   selector: 'app-create-orders',
@@ -8,11 +12,37 @@ import { Router } from '@angular/router';
 })
 export class CreateOrdersComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  projectForms!: FormGroup;
+
+  constructor(private router:Router, private fb:FormBuilder,private store:Store) { }
 
   ngOnInit(): void {
+
+    this.projectForms=this.fb.group({
+
+      packageName:[null,[Validators.required]],
+      packageId:[null,[Validators.required]],
+      destination:[null,[Validators.required]],
+      sender:[null,[Validators.required]],
+      receiver:[null,[Validators.required]], 
+      price:[null,[Validators.required]], 
+      weight:[null,[Validators.required]],
+      date:[null,[Validators.required]],   
+
+    })
   }
 
+
+  onSubmit(){
+
+    console.log(this.projectForms.value);
+
+    this.store.dispatch(Actions.AddOrder({newOrder:this.projectForms.value}))
+    this.store.dispatch(Actions.LoadOrders())
+     this.router.navigate(['admin/all'])
+    
+    
+  }
 
   back(){
 this.router.navigate(['admin/all'])

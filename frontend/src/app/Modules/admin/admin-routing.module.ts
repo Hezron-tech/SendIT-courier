@@ -13,7 +13,7 @@ const routes: Routes = [
     
     {path:'create', component:CreateOrdersComponent},
     {path:'all', component:AllOrdersComponent},
-    {path:'view',component:ViewOrderComponent},
+    {path:'view/:id',component:ViewOrderComponent},
    
     {path: 'status',component:StatusOrderComponent}
   ] 

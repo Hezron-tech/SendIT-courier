@@ -1,6 +1,6 @@
 export interface Orders{
     id?:number
-    name:string
+    packageName:string
     packageId:string
     destination:string
     sender:string

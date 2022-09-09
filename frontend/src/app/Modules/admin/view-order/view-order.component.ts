@@ -1,5 +1,11 @@
+
+
+import { getOrder } from './../../../Redux/Reducers/orderReducer';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { OrderState } from 'src/app/Redux/Reducers/orderReducer';
+import * as Actions from '../../../Redux/Actions/orderActions'
 
 @Component({
   selector: 'app-view-order',
@@ -8,9 +14,18 @@ import { Router } from '@angular/router';
 })
 export class ViewOrderComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  id!:number
+  order$ = this.store.select(getOrder)
+
+  constructor(private route:ActivatedRoute,private store:Store<OrderState>,private router:Router) { }
 
   ngOnInit(): void {
+
+    this.route.params.subscribe((param)=>{
+      this.id=+param['id']
+    })
+    this.store.dispatch(Actions.SelectedId({id:this.id}))
+
   }
 
   goback(){

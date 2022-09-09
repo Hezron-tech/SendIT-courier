@@ -6,36 +6,36 @@
   <div class="create-orders" style="margin:0 auto">
 
 
-    <form>
+    <form  [formGroup]="projectForms" (ngSubmit)="onSubmit()">
 
       <h1>Add new Order</h1>
       <div class="display">
         <div class="form-one">
           <p>Package Name</p>
-          <input type="text">
+          <input type="text" formControlName="packageName" class="form-control">
           <p>Package Id</p>
-          <input type="text">
+          <input type="text" formControlName="packageId" class="form-control">
           <p>Destination </p>
-          <input type="text">
+          <input type="text" formControlName="destination" class="form-control">
           <p>Sender</p>
-          <input type="text">
+          <input type="text" formControlName="sender" class="form-control">
 
         </div>
         <div class="form-two">
           <p>Receiver</p>
-          <input type="text">
+          <input type="text" formControlName="receiver" class="form-control">
 
           <p>Price</p>
-          <input type="text">
+          <input type="text" formControlName="price" class="form-control">
 
           <p> Weight</p>
-          <input type="text">
+          <input type="text" formControlName="weight" class="form-control">
 
           <p>date</p>
-          <input type="date">
+          <input type="date"formControlName="date" class="form-control">
         </div>
       </div>
-      <button class="create">Create New Order</button>
+      <button type="submit" class="create">Create New Order</button>
     </form>
   </div>
 

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Pipe } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { catchError, Observable, of } from 'rxjs';
 import { Orders } from 'src/app/Interface/order';
@@ -24,7 +24,7 @@ export class AllOrdersComponent implements OnInit {
 
   
 
-  constructor(private router:Router, private orders:OrderService,private fb:FormBuilder, private store:Store) { 
+  constructor(private router:Router, private orders:OrderService,private fb:FormBuilder, private store:Store,private route:ActivatedRoute) { 
   }
 
   ngOnInit(): void {
@@ -44,8 +44,11 @@ export class AllOrdersComponent implements OnInit {
   create(){
 this.router.navigate(['admin/create'])
   }
-  viewDetails(){
-    this.router.navigate(['admin/view'])
+  viewDetails(id:number =0){
+    this.store.dispatch(Actions.SelectedId({id}));
+    this.router.navigate([`/admin/view/${id}`],{
+       relativeTo:this.route
+    })
 
   }
 

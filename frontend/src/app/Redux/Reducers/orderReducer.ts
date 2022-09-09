@@ -9,25 +9,41 @@ export interface OrderState{
 
     orders:Orders[]
     ordersErrror:string
+    orderId:number
     error:string
     deleteMessage:string
+    addMessage:string
 }
 
 
 const initialState:OrderState={
     orders:[],
     ordersErrror:'',
+    orderId:0,
     error:'',
-    deleteMessage:''
+    deleteMessage:'',
+    addMessage:'',
 
 }
 
 
-const getOrderFeaturesState= createFeatureSelector<OrderState>('order')
+const getOrderFeaturesState= createFeatureSelector<OrderState>('order');
+
 export const getOrders= createSelector(
    getOrderFeaturesState, state=> state.orders
 )
 
+export const getOrderid=createSelector(
+    getOrderFeaturesState,
+    state=>state.orderId
+  )
+ 
+  export const getOrder=createSelector(
+    getOrderFeaturesState,
+    getOrderid,
+    (state,id)=>state.orders.find(order=>order.id===id)
+    
+  )
 
 
 export const OrderReducer = createReducer(
@@ -42,7 +58,18 @@ export const OrderReducer = createReducer(
     }),
 
 
-    //delete
+    // post orders/reducers
+on(Actions.SelectedId, (state,action):OrderState=>{
+    return{...state, orderId:action.id}
+}),on(Actions.AddOrderSuccess,(state,action):OrderState=>{
+    return{...state, addMessage:action.addMessage}
+}),
+on(Actions.AddOrderFailure,(state,action):OrderState=>{
+    return{...state, error:action.error}
+
+}),
+
+    //delete orders
     on(Actions.DeleteOrderSuccess, (state,action):OrderState=>{
         return{...state, deleteMessage:action.deletemessage}
     }),
