@@ -9,7 +9,7 @@ import { Loader } from '@googlemaps/js-api-loader';
 })
 export class MapComponent implements OnInit {
 
-  
+
 
   constructor(private map: google.maps.Map) { }
 
