@@ -7,6 +7,7 @@
       "sender": "wertyui",
       "receiver": "wertyuik",
       "price": "wertyui",
+      "status": "delivered",
       "weight": "h4",
       "date": "2022-09-14",
       "id": 6
@@ -18,6 +19,7 @@
       "sender": "qwertyui",
       "receiver": "qwertyu",
       "price": "wertyujikl",
+      "status": "pending",
       "weight": "wertyui",
       "date": "2022-09-30",
       "id": 7
@@ -29,6 +31,7 @@
       "sender": "wertyu",
       "receiver": "wertyuio;",
       "price": "34567",
+      "status": "pending",
       "weight": "wertyuio",
       "date": "2022-09-28",
       "id": 8
@@ -40,9 +43,34 @@
       "sender": "asdfghjkl",
       "receiver": "sdfghjkl",
       "price": "wertyukl",
+      "status": "delivered",
       "weight": "3456789",
       "date": "2022-09-20",
       "id": 9
+    },
+    {
+      "packageName": "23456",
+      "packageId": "ertyuj",
+      "destination": "asdfghj",
+      "sender": "asdfghj",
+      "receiver": "qwertyu",
+      "price": "asdfghj",
+      "status": "pending",
+      "weight": "sdfghjk",
+      "date": "2022-09-22",
+      "id": 10
+    },
+    {
+      "packageName": "qwertyui",
+      "packageId": "wertyu",
+      "destination": "wertyu",
+      "sender": "edrfghj",
+      "receiver": "wertyui",
+      "price": "wertyu",
+      "status": "pending",
+      "weight": "78jk",
+      "date": "2022-09-21",
+      "id": 12
     }
   ]
 }

@@ -26,6 +26,7 @@ export class CreateOrdersComponent implements OnInit {
       sender:[null,[Validators.required]],
       receiver:[null,[Validators.required]], 
       price:[null,[Validators.required]], 
+      status:[null,[Validators.required]], 
       weight:[null,[Validators.required]],
       date:[null,[Validators.required]],   
 

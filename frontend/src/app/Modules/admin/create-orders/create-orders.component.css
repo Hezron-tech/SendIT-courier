@@ -49,3 +49,6 @@ form{
 .form-two{
     margin-left: 2rem;
 }
+select{
+    width: 100%;
+}

@@ -30,11 +30,17 @@
 
           <p> Weight</p>
           <input type="text" formControlName="weight" class="form-control">
-
-          <p>date</p>
-          <input type="date"formControlName="date" class="form-control">
+          <p>Status</p>
+         <select formControlName="status" class="form-control">
+          <option value="pending">Pending</option>
+          <option value="delivered">delivered</option>
+         </select>
+          
         </div>
+        
       </div>
+      <p>date</p>
+        <input type="date"formControlName="date" class="form-control">
       <button type="submit" class="create">Create New Order</button>
     </form>
   </div>
