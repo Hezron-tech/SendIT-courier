@@ -14,6 +14,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { OrderEffectsService } from './Modules/admin/Redux/Effects/order-effects.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 // import { StoreModule } from '@ngrx/store';
 // import { EffectsModule } from '@ngrx/effects';
 // import { environment } from 'src/environments/environment';
@@ -22,7 +23,7 @@ import { OrderEffectsService } from './Modules/admin/Redux/Effects/order-effects
 // import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, NavbarComponent],
+  declarations: [AppComponent, HomepageComponent, NavbarComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

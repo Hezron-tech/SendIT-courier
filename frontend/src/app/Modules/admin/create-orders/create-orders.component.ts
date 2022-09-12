@@ -31,6 +31,10 @@ export class CreateOrdersComponent implements OnInit {
       date:[null,[Validators.required]],   
 
     })
+
+    this.projectForms.get('weight')?.valueChanges.subscribe(res=>{
+      this.projectForms.get('price')!.setValue(res*100)
+    })
   }
 
 

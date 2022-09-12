@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { catchError, Observable, of } from 'rxjs';
 import { Orders } from 'src/app/Interface/order';
 import { getOrders } from 'src/app/Modules/admin/Redux/Reducers/orderReducer';
+import { AuthService } from 'src/app/Services/auth.service';
 import { OrderService } from 'src/app/Services/order.service';
 import * as Actions from '../Redux/Actions/orderActions'
 
@@ -24,7 +25,7 @@ export class AllOrdersComponent implements OnInit {
 
   
 
-  constructor(private router:Router, private orders:OrderService,private fb:UntypedFormBuilder, private store:Store,private route:ActivatedRoute) { 
+  constructor(private router:Router, private orders:OrderService,private fb:UntypedFormBuilder, private store:Store,private route:ActivatedRoute,private authService:AuthService) { 
   }
 
   ngOnInit(): void {
@@ -57,6 +58,10 @@ this.router.navigate(['admin/create'])
     this.store.dispatch(Actions.DeleteOrder({id}))
     this.store.dispatch(Actions.LoadOrders())
 
+  }
+
+  logout(){
+this.authService.logout()
   }
 
 }

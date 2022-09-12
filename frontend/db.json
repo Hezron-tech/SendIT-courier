@@ -95,16 +95,25 @@
       "weight": "jkxbzj",
       "date": "2022-09-30",
       "id": 15
+    },
+    {
+      "packageName": "Acer",
+      "packageId": "k100A",
+      "destination": "Kericho",
+      "sender": "hezzy@gmail.com",
+      "receiver": "hezzy@gmail.com",
+      "price": 30000,
+      "status": "pending",
+      "weight": "300",
+      "date": "2022-09-23",
+      "id": 16
     }
   ],
-
-
   "customers": [
     {
-      "username":"hezzy3689",
-      "email":"hezzy@gmail.com",
-      "password":"@1234"
-
+      "username": "hezzy3689",
+      "email": "hezzy@gmail.com",
+      "password": "@1234"
     }
   ]
 }

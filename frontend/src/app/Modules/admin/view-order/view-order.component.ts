@@ -25,6 +25,11 @@ export class ViewOrderComponent implements OnInit {
       this.id=+param['id']
     })
     this.store.dispatch(Actions.SelectedId({id:this.id}))
+    this.order$.subscribe(order=>{
+      console.log(order);
+      
+    })
+    
 
   }
 
