@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Pipe } from '@angular/core';
-import { UntypedFormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { catchError, Observable, of } from 'rxjs';
@@ -25,7 +25,7 @@ export class AllOrdersComponent implements OnInit {
 
   
 
-  constructor(private router:Router, private orders:OrderService,private fb:UntypedFormBuilder, private store:Store,private route:ActivatedRoute,private authService:AuthService) { 
+  constructor(private router:Router, private orders:OrderService,private fb:FormBuilder, private store:Store,private route:ActivatedRoute,private authService:AuthService) { 
   }
 
   ngOnInit(): void {
@@ -62,6 +62,7 @@ this.router.navigate(['admin/create'])
 
   logout(){
 this.authService.logout()
+this.router.navigate(['/'])
   }
 
 }
