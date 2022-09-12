@@ -1,6 +1,7 @@
 
 import { createAction, props } from "@ngrx/store";
 import { Orders } from "src/app/Interface/order";
+import { Users } from "src/app/Interface/user";
 
 
 export const SelectedId= createAction('SelectedId', props<{id:number}>())
@@ -24,3 +25,24 @@ export const AddOrderFailure= createAction('AddOrderFailure',props<{error:string
 export const DeleteOrder = createAction("DeleteOrder",props<{id:number}>())
 export const DeleteOrderSuccess = createAction('DeleteOrderSuccess', props<{deletemessage:string}>())
 export const DeleteOrderFailure = createAction('DeleteOrder', props<{error:string}>())
+
+
+//add users
+
+export const RegisterCustomer= createAction('RegisterCustomer',
+
+props<{newCustomer:Users}>()
+
+)
+
+export const RegisterCustomerSuccess= createAction('RegisterCustomerSuccess',
+
+props<{addMessage:string}>()
+
+)
+
+export const RegisterCustomerFailure= createAction('RegisterCustomerFailure',
+
+props<{error:string}>()
+
+)

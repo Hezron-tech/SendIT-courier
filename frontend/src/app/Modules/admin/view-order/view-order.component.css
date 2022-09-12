@@ -3,9 +3,10 @@
 
     background-color: blueviolet;
     height: 500px;
-    width: 400px;
+    width: 350px;
     margin: auto;
     margin-top: 2rem;
+   
     
 }
 
@@ -32,4 +33,12 @@ button{
 
 .back{
     margin-top: 2rem;
+}
+.con{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.map{
+    margin-left: 2rem;
 }

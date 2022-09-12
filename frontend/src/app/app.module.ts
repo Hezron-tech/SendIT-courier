@@ -9,12 +9,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+
+import { GoogleMapsModule } from '@angular/google-maps';
 import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { OrderReducer } from './Redux/Reducers/orderReducer';
-import { OrderEffectsService } from './Redux/Effects/order-effects.service';
+import { OrderEffectsService } from './Modules/admin/Redux/Effects/order-effects.service';
+// import { StoreModule } from '@ngrx/store';
+// import { EffectsModule } from '@ngrx/effects';
+// import { environment } from 'src/environments/environment';
+// import { OrderEffectsService } from './Modules/admin/Redux/Effects/order-effects.service';
+// import { OrderReducer } from './Modules/admin/Redux/Reducers/orderReducer';
+// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [AppComponent, HomepageComponent, NavbarComponent],
@@ -22,16 +27,14 @@ import { OrderEffectsService } from './Redux/Effects/order-effects.service';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    GoogleMapsModule,
     NgbModule,
     HttpClientModule,
-
     NgxPaginationModule,
-    StoreModule.forRoot({ order: OrderReducer }, {}),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production,
-    }),
-    EffectsModule.forRoot([OrderEffectsService]),
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    
+   
   ],
 
   providers: [],

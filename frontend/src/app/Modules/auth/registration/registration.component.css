@@ -1,6 +1,6 @@
 
 .register{
-    background-color: #9497a1;
+    background-color: #F5F5DC;
     justify-content: center;
     align-items: center;
     
@@ -8,7 +8,7 @@
    width: auto;
     height: 100vh;
     border-radius: 5px;
-    color: #fff;
+    color: black;
     font-weight: bold;
     
     padding: 10px;
@@ -26,6 +26,7 @@ h4{
 .inputs{
     
     justify-content: space-evenly;
+   
 }
 .reg{
     padding-top: 3rem;
@@ -51,12 +52,14 @@ h4{
     width: 150px;
     border-radius: 15px;
     padding: 7px;
+    background-color: white;
 }
 
 .pass input{
     width: 100%;
     border-radius: 15px;
     padding: 7px;
+    background-color: white;
 }
 
 .reg-btn{

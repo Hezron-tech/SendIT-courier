@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { Loader } from '@googlemaps/js-api-loader';
 
 
@@ -11,27 +12,23 @@ export class MapComponent implements OnInit {
 
 
 
-  constructor(private map: google.maps.Map) { }
+  constructor() { }
 
   ngOnInit(): void {
 
-    // let loader = new Loader(
-    //   {
-    //     apiKey:'AIzaSyAOFp0IlAypbayETY9K03i9nFpbqFNM_Uo'
-    //   }
-    // ); 
   }
-  display: any;
+  @ViewChild(MapInfoWindow) infoWindow: MapInfoWindow | undefined;
   center: google.maps.LatLngLiteral = {
-      lat: 24,
-      lng: 12
+      lat: 1.2921,
+      lng: 36.8219
   };
-  zoom = 4;
-  moveMap(event: google.maps.MapMouseEvent) {
-      if (event.latLng != null) this.center = (event.latLng.toJSON());
+  markerPositions: google.maps.LatLngLiteral[] = [];
+  zoom = 8;
+  addMarker(event: google.maps.MapMouseEvent) {
+      if (event.latLng != null) this.markerPositions.push(event.latLng.toJSON());
   }
-  move(event: google.maps.MapMouseEvent) {
-      if (event.latLng != null) this.display = event.latLng.toJSON();
+  openInfoWindow(marker: MapMarker) {
+      if (this.infoWindow != undefined) this.infoWindow.open(marker);
   }
 
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Orders } from '../Interface/order';
+import { Users } from '../Interface/user';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,16 @@ baseurl='http://localhost:3000'
   deleteOrder(id:number): Observable<{message:string}>{
     return this.http.delete<{message:string}> (`${this.baseurl}/parcels/${id}`)
   }
+
+
+
+
+  
+
+  registerUser(user:Users): Observable<{message:string}>{
+    return this.http.post<{message:string}> (`${this.baseurl}/customers/`,user)
+  }
+
+
 
 }

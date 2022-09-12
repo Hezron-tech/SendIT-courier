@@ -1,14 +1,15 @@
 .section{
     background-color:#7BC4B2;
+    
 }
 .para{
-    color: white;
+    color: black;
     font-size: 40px;
 }
 
 .section{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
     padding-left: 4rem;
 }
@@ -36,7 +37,7 @@
     justify-content: space-evenly;
     margin-left: 1rem;
     margin-right: 1rem;
-    color: white;
+    color: black;
     gap: 2rem;
 }
 
@@ -44,7 +45,7 @@
     padding: 30px;
     border: 2px solid white;
     border-radius: 5px;
-    background-color: #4057A9
+    background-color: #7BC4B2
 }
 
 .star-one img{
@@ -82,8 +83,8 @@ input{
 }
 
 .contact-form{
-    background-color: #4057A9;
-    color: white;
+    background-color: #7BC4B2;
+    color: black;
     
 }
 

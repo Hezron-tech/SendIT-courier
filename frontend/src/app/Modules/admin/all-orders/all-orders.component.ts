@@ -1,12 +1,12 @@
 import { Component, Input, OnInit, Pipe } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { catchError, Observable, of } from 'rxjs';
 import { Orders } from 'src/app/Interface/order';
-import { getOrders } from 'src/app/Redux/Reducers/orderReducer';
+import { getOrders } from 'src/app/Modules/admin/Redux/Reducers/orderReducer';
 import { OrderService } from 'src/app/Services/order.service';
-import * as Actions from '../../../Redux/Actions/orderActions'
+import * as Actions from '../Redux/Actions/orderActions'
 
 @Component({
   selector: 'app-all-orders',
@@ -24,7 +24,7 @@ export class AllOrdersComponent implements OnInit {
 
   
 
-  constructor(private router:Router, private orders:OrderService,private fb:FormBuilder, private store:Store,private route:ActivatedRoute) { 
+  constructor(private router:Router, private orders:OrderService,private fb:UntypedFormBuilder, private store:Store,private route:ActivatedRoute) { 
   }
 
   ngOnInit(): void {

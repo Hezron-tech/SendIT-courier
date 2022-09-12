@@ -8,7 +8,7 @@
   margin-top: 3rem;
     width: 100px;
     border-radius: 15px;
-    background-color: #237DDB;
+    background-color: #7BC4B2;
     color: white;
 }
 .se{
@@ -92,7 +92,7 @@ form.search input[type=text] {
   }
 
   th{
-    background-color: #0b7dda;
+    background-color: #7BC4B2;
     color: #fff;
     border: 2px solid black;
     font-size: 20px;
@@ -102,12 +102,12 @@ form.search input[type=text] {
   td{
     text-align: center;
     border: 1px solid black;
-    padding: 5px;
+    padding: 10px;
   }
 
   .view-button{
     border: none;
-    background-color: red;
+    background-color: #F1686C;
     border-radius: 15px;
     color: white;
   }

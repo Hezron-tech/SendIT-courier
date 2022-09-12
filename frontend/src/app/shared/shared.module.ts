@@ -7,6 +7,6 @@ import { GoogleMapsModule } from '@angular/google-maps';
 @NgModule({
   declarations: [ErrorComponent, MapComponent],
   imports: [CommonModule, GoogleMapsModule],
-  exports: [ErrorComponent],
+  exports: [ErrorComponent,MapComponent],
 })
 export class SharedModule {}

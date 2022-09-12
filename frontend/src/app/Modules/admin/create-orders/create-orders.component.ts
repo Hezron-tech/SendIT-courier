@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import * as Actions from '../../../Redux/Actions/orderActions'
+import * as Actions from '../Redux/Actions/orderActions'
 
 @Component({
   selector: 'app-create-orders',
@@ -12,9 +12,9 @@ import * as Actions from '../../../Redux/Actions/orderActions'
 })
 export class CreateOrdersComponent implements OnInit {
 
-  projectForms!: FormGroup;
+  projectForms!: UntypedFormGroup;
 
-  constructor(private router:Router, private fb:FormBuilder,private store:Store) { }
+  constructor(private router:Router, private fb:UntypedFormBuilder,private store:Store) { }
 
   ngOnInit(): void {
 

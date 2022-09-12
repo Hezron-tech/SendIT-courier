@@ -71,6 +71,40 @@
       "weight": "78jk",
       "date": "2022-09-21",
       "id": 12
+    },
+    {
+      "packageName": "qwertyuio",
+      "packageId": "wertyui",
+      "destination": "wertyui",
+      "sender": "wertyu",
+      "receiver": "qwertyuio",
+      "price": "wertyui",
+      "status": "pending",
+      "weight": "wertyuio",
+      "date": "2022-09-23",
+      "id": 13
+    },
+    {
+      "packageName": "wertyu",
+      "packageId": "sdcbJ>X CN",
+      "destination": "hetey",
+      "sender": "jhdCBX",
+      "receiver": "kcdx nxn",
+      "price": "234567890",
+      "status": "pending",
+      "weight": "jkxbzj",
+      "date": "2022-09-30",
+      "id": 15
+    }
+  ],
+
+
+  "customers": [
+    {
+      "username":"hezzy3689",
+      "email":"hezzy@gmail.com",
+      "password":"@1234"
+
     }
   ]
 }

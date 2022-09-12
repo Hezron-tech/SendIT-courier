@@ -1,11 +1,11 @@
 
 
-import { getOrder } from './../../../Redux/Reducers/orderReducer';
+import { getOrder } from '../Redux/Reducers/orderReducer';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { OrderState } from 'src/app/Redux/Reducers/orderReducer';
-import * as Actions from '../../../Redux/Actions/orderActions'
+import { OrderState } from 'src/app/Modules/admin/Redux/Reducers/orderReducer';
+import * as Actions from '../Redux/Actions/orderActions'
 
 @Component({
   selector: 'app-view-order',
