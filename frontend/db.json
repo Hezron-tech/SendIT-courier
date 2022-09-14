@@ -107,6 +107,18 @@
       "weight": "300",
       "date": "2022-09-23",
       "id": 16
+    },
+    {
+      "packageName": "hhh",
+      "packageId": "k100A",
+      "destination": "Nairobi",
+      "sender": "kip@gmail.com",
+      "receiver": "hezzy@gmail.com",
+      "price": 40000,
+      "status": "pending",
+      "weight": "400",
+      "date": "2022-09-08",
+      "id": 17
     }
   ],
   "customers": [

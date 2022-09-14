@@ -62,3 +62,10 @@ input.ng-valid.ng-touched{
 .error{
     color: red;
 }
+
+select.ng-invalid.ng-touched{
+    border:2px solid red ;
+}
+select.ng-valid.ng-touched{
+    border:2px solid green ;
+}

@@ -41,13 +41,17 @@ export class CreateOrdersComponent implements OnInit {
   onSubmit(){
 
     console.log(this.projectForms.value);
+    if(this.projectForms.valid){
+      this.store.dispatch(Actions.AddOrder({newOrder:this.projectForms.value}))
+      this.store.dispatch(Actions.LoadOrders())
+       this.router.navigate(['admin/all'])
+      
+      
+    }
 
-    this.store.dispatch(Actions.AddOrder({newOrder:this.projectForms.value}))
-    this.store.dispatch(Actions.LoadOrders())
-     this.router.navigate(['admin/all'])
-    
-    
-  }
+    }
+
+   
 
   back(){
 this.router.navigate(['admin/all'])

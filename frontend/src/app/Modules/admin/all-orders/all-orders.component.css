@@ -9,7 +9,8 @@
     width: 100px;
     border-radius: 15px;
     background-color: #7BC4B2;
-    color: white;
+    color: black;
+    background-color: white;
 }
 .se{
     padding-top: 2rem;
@@ -26,7 +27,7 @@
     
     height: 400px;
     width: 300px;
-    background-color: #9497A2;
+    background-color: #7BC4B2;
     border-radius: 5px;
 }
 
