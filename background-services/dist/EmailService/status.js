@@ -18,42 +18,43 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const config_1 = require("../Config/config");
 dotenv_1.default.config();
 const email_1 = __importDefault(require("../Helpers/email"));
-const Sendadmin = () => __awaiter(void 0, void 0, void 0, function* () {
+const SendStatus = () => __awaiter(void 0, void 0, void 0, function* () {
     const pool = yield mssql_1.default.connect(config_1.sqlConfig);
     const parcels = yield (yield pool.request().query(`
-SELECT * FROM parcels WHERE status =pending`)).recordset;
+SELECT * FROM parcels WHERE status ='pending'`)).recordset;
     for (let parcel of parcels) {
         ejs_1.default.renderFile('template/receiver.ejs', { email: parcel.receiverEmail }, (error, data) => __awaiter(void 0, void 0, void 0, function* () {
             let messageoption = {
                 from: process.env.EMAIL,
                 to: parcel.receiverEmail,
-                subject: "Parcel delivery status",
+                subject: "delivery status",
                 html: data,
             };
             try {
                 yield (0, email_1.default)(messageoption);
-                yield pool.request().query(`UPDATE parcels SET status=delivered WHERE status = pending`);
+                yield pool.request().query(`UPDATE parcels SET status='delivered' WHERE status = 'pending'`);
                 console.log('Email is Sent');
             }
             catch (error) {
                 console.log(error);
             }
         }));
-        // ejs.renderFile('template/sender.ejs',{email:parcel.receiverEmail} ,async(error,data)=>{
-        //     let messageoption={
-        //         from:process.env.EMAIL,
-        //         to:'parcel.receiverEmail',
-        //         subject:"Parcel delivery status",
-        //         html:data,
-        //     }
-        //     try {
-        //         await sendMail(messageoption)
-        //         await pool.request().query(`UPDATE parcels SET status='delivered' WHERE ProjectsId = '${parcel.parcelId}'`)
-        //         console.log('Email is Sent');
-        //     } catch (error) {
-        //         console.log(error);
-        //     }
-        // })
+        ejs_1.default.renderFile('template/sender.ejs', { email: parcel.receiverEmail }, (error, data) => __awaiter(void 0, void 0, void 0, function* () {
+            let messageoption = {
+                from: process.env.EMAIL,
+                to: parcel.senderEmail,
+                subject: "delivery status",
+                html: data,
+            };
+            try {
+                yield (0, email_1.default)(messageoption);
+                yield pool.request().query(`UPDATE parcels SET status='delivered' WHERE status = 'pending'`);
+                console.log('Email is Sent');
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }));
     }
 });
-exports.default = Sendadmin;
+exports.default = SendStatus;

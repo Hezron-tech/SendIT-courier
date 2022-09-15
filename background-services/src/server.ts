@@ -1,16 +1,16 @@
 import express,{json} from 'express'
 import SendEmails from './EmailService/registration';
  import cron from 'node-cron'
-import Sendadmin from './EmailService/status';
+
 import Sendadmins from './EmailService/transit';
-//  import SendEmails from './EmailService/service';
-// import SendEmail from './EmailService/project';
+import SendStatus from './EmailService/status';
+
 const app = express()
 const run =()=>{
   cron.schedule('*/30 * * * * *', async() => {
     console.log('running a  minute');
     await SendEmails()
-     await Sendadmin()
+    await SendStatus()
     await Sendadmins()
    
   })

@@ -34,10 +34,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importStar(require("express"));
 const registration_1 = __importDefault(require("./EmailService/registration"));
 const node_cron_1 = __importDefault(require("node-cron"));
-const status_1 = __importDefault(require("./EmailService/status"));
 const transit_1 = __importDefault(require("./EmailService/transit"));
-//  import SendEmails from './EmailService/service';
-// import SendEmail from './EmailService/project';
+const status_1 = __importDefault(require("./EmailService/status"));
 const app = (0, express_1.default)();
 const run = () => {
     node_cron_1.default.schedule('*/30 * * * * *', () => __awaiter(void 0, void 0, void 0, function* () {

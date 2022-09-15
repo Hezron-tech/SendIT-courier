@@ -5,7 +5,7 @@ import {sqlConfig} from '../Config/config'
 dotenv.config()
 import sendMail from '../Helpers/email'
 interface Parcel{
-    parcelId:string
+    id:string
     packageName:string
     destination:string
     senderEmail:string
@@ -20,23 +20,23 @@ interface Parcel{
 }
 
 
-const Sendadmin= async()=>{
+const SendStatus= async()=>{
 const pool = await mssql.connect(sqlConfig)
 const parcels:Parcel[]= await(await pool.request().query(`
-SELECT * FROM parcels WHERE status =pending`)).recordset
+SELECT * FROM parcels WHERE status ='pending'`)).recordset
  for(let parcel of parcels){
     ejs.renderFile('template/receiver.ejs',{email:parcel.receiverEmail} ,async(error,data)=>{
         let messageoption={
             from:process.env.EMAIL,
             to:parcel.receiverEmail,
-            subject:"Parcel delivery status",
+            subject:"delivery status",
             html:data,
         }
 
         try {
             
             await sendMail(messageoption)
-            await pool.request().query(`UPDATE parcels SET status=delivered WHERE status = pending`)
+            await pool.request().query(`UPDATE parcels SET status='delivered' WHERE status = 'pending'`)
             console.log('Email is Sent');
             
             
@@ -48,33 +48,32 @@ SELECT * FROM parcels WHERE status =pending`)).recordset
 
     })
 
-    // ejs.renderFile('template/sender.ejs',{email:parcel.receiverEmail} ,async(error,data)=>{
-    //     let messageoption={
-    //         from:process.env.EMAIL,
-    //         to:'parcel.receiverEmail',
-    //         subject:"Parcel delivery status",
-    //         html:data,
-    //     }
+    ejs.renderFile('template/sender.ejs',{email:parcel.receiverEmail} ,async(error,data)=>{
+        let messageoption={
+            from:process.env.EMAIL,
+            to:parcel.senderEmail,
+            subject:"delivery status",
+            html:data,
+        }
 
-    //     try {
+        try {
             
-    //         await sendMail(messageoption)
-    //         await pool.request().query(`UPDATE parcels SET status='delivered' WHERE ProjectsId = '${parcel.parcelId}'`)
-    //         console.log('Email is Sent');
+            await sendMail(messageoption)
+            await pool.request().query(`UPDATE parcels SET status='delivered' WHERE status = 'pending'`)
+            console.log('Email is Sent');
             
             
-    //     } catch (error) {
-    //         console.log(error);
+        } catch (error) {
+            console.log(error);
             
-    //     }
+        }
 
 
-    // })
-
+    })
  }
 
 
 }
 
 
-export default  Sendadmin
+export default  SendStatus
