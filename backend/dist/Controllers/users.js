@@ -34,12 +34,23 @@ const validators_1 = require("../Helpers/validators");
 const db = new db_1.default();
 const registerUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const pool = yield mssql_1.default.connect(config_1.sqlConfig);
         const id = (0, uuid_1.v4)();
         const { username, email, password } = req.body;
         const { error, value } = validators_1.UserSchema.validate(req.body);
         const hashedpassword = yield bcrypt_1.default.hash(password, 10);
-        db.exec('insertUsers', { id, username, email, password: hashedpassword });
-        res.json({ message: 'user registered Successfully' });
+        const result = yield pool
+            .request()
+            .input("email", req.body.email)
+            .execute("getByEmail");
+        const { recordset } = result;
+        if (recordset.length > 0) {
+            return res
+                .status(400)
+                .send({ message: "Email already registered", success: false });
+        }
+        db.exec("insertUsers", { id, username, email, password: hashedpassword });
+        res.json({ message: "user registered Successfully" });
     }
     catch (error) {
         res.json({ error });
@@ -52,7 +63,8 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const pool = yield mssql_1.default.connect(config_1.sqlConfig);
         const { error, value } = validators_1.loginSchemas.validate(req.body);
         if (error) {
-            return res.status(500)
+            return res
+                .status(500)
                 .json({ error: error.details[0].message, success: false });
         }
         const userResult = yield (yield pool
@@ -61,7 +73,8 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             .execute("getUser")).recordset;
         const user = userResult[0];
         if (!user) {
-            return res.status(404)
+            return res
+                .status(404)
                 .json({ message: "user not found", success: false });
         }
         const validPassword = yield bcrypt_1.default.compare(password, user.password);
@@ -73,7 +86,12 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             expiresIn: "3600s",
         });
         console.log("Login user");
-        res.json({ message: "successfully login", token, success: true, user: rest });
+        res.json({
+            message: "successfully login",
+            token,
+            success: true,
+            user: rest,
+        });
     }
     catch (error) {
         res.json({ error, success: false });
@@ -82,7 +100,7 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.loginUser = loginUser;
 const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { recordset } = yield db.exec('getUsers');
+        const { recordset } = yield db.exec("getUsers");
         res.json(recordset);
     }
     catch (error) {
