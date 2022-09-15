@@ -25,8 +25,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importStar(require("express"));
 const parcelsRoutes_1 = __importDefault(require("./Routes/parcelsRoutes"));
 const userRoutes_1 = __importDefault(require("./Routes/userRoutes"));
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 app.use((0, express_1.json)());
+app.use((0, cors_1.default)());
 app.use('/users', userRoutes_1.default);
 app.use('/parcel', parcelsRoutes_1.default);
 app.use((err, req, res, next) => {
