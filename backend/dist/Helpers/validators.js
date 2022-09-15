@@ -15,7 +15,6 @@ exports.loginSchemas = joi_1.default.object({
     password: joi_1.default.string().required().min(8),
 });
 exports.ParcelSchema = joi_1.default.object({
-    id: joi_1.default.string().required(),
     packageName: joi_1.default.string().required(),
     senderEmail: joi_1.default.string().required(),
     receiverEmail: joi_1.default.string().required(),

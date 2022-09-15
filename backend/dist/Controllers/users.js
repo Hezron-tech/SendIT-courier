@@ -52,7 +52,8 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const pool = yield mssql_1.default.connect(config_1.sqlConfig);
         const { error, value } = validators_1.loginSchemas.validate(req.body);
         if (error) {
-            return res.json({ error: error.details[0].message, success: false });
+            return res.status(500)
+                .json({ error: error.details[0].message, success: false });
         }
         const userResult = yield (yield pool
             .request()
@@ -60,7 +61,8 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             .execute("getUser")).recordset;
         const user = userResult[0];
         if (!user) {
-            return res.json({ message: "user not found", success: false });
+            return res.status(404)
+                .json({ message: "user not found", success: false });
         }
         const validPassword = yield bcrypt_1.default.compare(password, user.password);
         if (!validPassword) {

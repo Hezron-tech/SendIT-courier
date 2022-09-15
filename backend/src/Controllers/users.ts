@@ -43,7 +43,8 @@ export const loginUser: RequestHandler = async (req, res) => {
     const pool = await mssql.connect(sqlConfig);
     const { error, value } = loginSchemas.validate(req.body);
     if (error) {
-      return res.json({ error: error.details[0].message, success: false });
+      return res.status(500)
+      .json({ error: error.details[0].message, success: false });
     }
 
     const userResult: User[] = await (
@@ -56,7 +57,8 @@ export const loginUser: RequestHandler = async (req, res) => {
     const user: User = userResult[0]
 
     if (!user) {
-      return res.json({ message: "user not found", success: false });
+      return res.status(404)
+      .json({ message: "user not found", success: false });
     }
 
     const validPassword = await bcrypt.compare(password, user.password);
