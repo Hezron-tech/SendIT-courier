@@ -6,7 +6,7 @@ const db = new Connection()
 
 interface ExtendedRequest extends Request {
   body: {
-    parcelId:string,
+    id:string,
     packageName:string
     destination:string
     senderEmail:string
@@ -20,14 +20,14 @@ interface ExtendedRequest extends Request {
 }
 export const insertParcel = async (req: ExtendedRequest, res: Response) => {
   try {
-    const parcelId = uid()
+    const id = uid()
     const { packageName, destination,senderEmail,receiverEmail,lat,long,weight,price,date } = req.body
 
     const { error, value } = ParcelSchema.validate(req.body)
     if (error) {
         return res.json({ error: error.details[0].message })
     }
-    db.exec('insertParcel',{parcelId,packageName,destination,senderEmail,receiverEmail,lat,long,weight,price,date})
+    db.exec('insertParcel',{id,packageName,destination,senderEmail,receiverEmail,lat,long,weight,price,date})
     res.json({ message: 'Parcel Inserted Successfully' })
   } catch (error) {
     res.json({ error })
@@ -37,71 +37,97 @@ export const insertParcel = async (req: ExtendedRequest, res: Response) => {
 
 
 
-// export const getProducts: RequestHandler = async (req, res) => {
-//   try {
-//     const {recordset} =await db.exec('getProducts')
-//     res.json(recordset)
-//   } catch (error) {
-//     res.json({ error })
-//   }
-// }
+export const getParcels: RequestHandler = async (req, res) => {
+  try {
+    const {recordset} =await db.exec('allParcels')
+    res.json(recordset)
+  } catch (error) {
+    res.json({ error })
+  }
+}
 
-// export const getProduct: RequestHandler<{ id: string }> = async (req, res) => {
-//   try {
-//     const id = req.params.id
-//     const {recordset} =await db.exec('getProduct',{id})
-//     if (!recordset[0]) {
-//       res.json({ message: 'Product Not Found' })
-//     } else {
-//       res.json(recordset)
-//     }
-//   } catch (error) {
-//     res.json({ error })
-//   }
-// }
+export const getParcel: RequestHandler<{ id: string }> = async (req, res) => {
+  try {
+    const id  = req.params.id
+    const {recordset} =await db.exec('singleParcel',{id})
+    if (!recordset[0]) {
+      res.json({ message: 'Parcel Not Found' })
+    } else {
+      res.json(recordset)
+    }
+  } catch (error) {
+    res.json({ error })
+  }
+}
 
-// export const updateProduct: RequestHandler<{ id: string }> = async (
-//   req,
-//   res,
-// ) => {
-//   try {
-//     const id= req.params.id
-//     const { product, description } = req.body as {
-//       product: string
-//       description: string
-//     }
-//        const {recordset} =await db.exec('getProduct',{id})
-//       if(!recordset[0]){
-//          res.json({ message: 'Product Not Found' })
-//       }else{
-//          await  db.exec('updateProduct',{id,product,description})
-//           res.json({message:'Product Updated ...'})
-//       }
+
+
+export const updateParcel: RequestHandler<{ id: string }> = async (
+  req,
+  res,
+) => {
+  try {
+    const id= req.params.id
+    const {packageName, destination,senderEmail,receiverEmail,lat,long,weight,price,date} = req.body as {
+      
+    packageName:string
+    destination:string
+    senderEmail:string
+    receiverEmail:string
+    lat:string
+    long:string
+    weight:string
+    price:string
+    date:string
+    }
+       const {recordset} =await db.exec('singleParcel',{id})
+      if(!recordset[0]){
+         res.json({ message: 'Parcel Not Found' })
+      }else{
+         await  db.exec('updateParcel',{id,packageName, destination,senderEmail,receiverEmail,lat,long,weight,price,date})
+          res.json({message:'Parcel Updated ...'})
+      }
  
 
-//   } catch (error:any) {
-//       res.json({ error })
-//   }
-// }
+  } catch (error:any) {
+      res.json({ error })
+  }
+}
 
 
 
-// export const deleteProduct:RequestHandler<{id:string}> =async(req,res)=>{
-//     try {
-//         const id = req.params.id
-//         const {recordset} =await db.exec('getProduct',{id})
-//         if(!recordset[0]){
-//          res.json({ message: 'Product Not Found' })
-//         }else{
-//           // Procedure Way
-//         //   await db.exec('deleteProduct', {id})
-//         // res.json({message:'Product Deleted'})
+export const deleteParcel:RequestHandler<{id:string}> =async(req,res)=>{
+    try {
+        const id = req.params.id
+        const {recordset} =await db.exec('singleParcel',{id})
+        if(!recordset[0]){
+         res.json({ message: 'Parcel Not Found' })
+        }else{
+          // Procedure Way
+        await db.exec('softDeleteParcel', {id})
+        res.json({message:'Parcel Deleted'})
 
-//         // Query Way
-//         await db.query(`DELETE FROM Products WHERE id='${id}'`)
-//         res.json({message:'Product Deleted'})
-//       }
-//     } catch (error:any) {
-//        res.json({ error }) 
-//     }
-// }
+        // Query Way
+        // await db.query(`DELETE FROM parcels WHERE id='${id}'`)
+        // res.json({message:'Product Deleted'})
+      }
+    } catch (error:any) {
+       res.json({ error }) 
+    }
+}
+
+
+export const statusParcel:RequestHandler<{id:string}> =async(req,res)=>{
+  try {
+      const id = req.params.id
+      const {recordset} =await db.exec('singleParcel',{id})
+      if(!recordset[0]){
+       res.json({ message: 'Parcel Not Found' })
+      }else{
+        await db.exec('statusParcel', {id})
+      res.json({message:'Parcel Delivered'})
+    }
+  } catch (error:any) {
+     res.json({ error }) 
+  }
+}

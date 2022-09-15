@@ -12,20 +12,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.insertParcel = void 0;
+exports.statusParcel = exports.deleteParcel = exports.updateParcel = exports.getParcel = exports.getParcels = exports.insertParcel = void 0;
 const uuid_1 = require("uuid");
 const db_1 = __importDefault(require("../DatabaseHelpers/db"));
 const validators_1 = require("../Helpers/validators");
 const db = new db_1.default();
 const insertParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const parcelId = (0, uuid_1.v4)();
+        const id = (0, uuid_1.v4)();
         const { packageName, destination, senderEmail, receiverEmail, lat, long, weight, price, date } = req.body;
         const { error, value } = validators_1.ParcelSchema.validate(req.body);
         if (error) {
             return res.json({ error: error.details[0].message });
         }
-        db.exec('insertParcel', { parcelId, packageName, destination, senderEmail, receiverEmail, lat, long, weight, price, date });
+        db.exec('insertParcel', { id, packageName, destination, senderEmail, receiverEmail, lat, long, weight, price, date });
         res.json({ message: 'Parcel Inserted Successfully' });
     }
     catch (error) {
@@ -33,63 +33,85 @@ const insertParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.insertParcel = insertParcel;
-// export const getProducts: RequestHandler = async (req, res) => {
-//   try {
-//     const {recordset} =await db.exec('getProducts')
-//     res.json(recordset)
-//   } catch (error) {
-//     res.json({ error })
-//   }
-// }
-// export const getProduct: RequestHandler<{ id: string }> = async (req, res) => {
-//   try {
-//     const id = req.params.id
-//     const {recordset} =await db.exec('getProduct',{id})
-//     if (!recordset[0]) {
-//       res.json({ message: 'Product Not Found' })
-//     } else {
-//       res.json(recordset)
-//     }
-//   } catch (error) {
-//     res.json({ error })
-//   }
-// }
-// export const updateProduct: RequestHandler<{ id: string }> = async (
-//   req,
-//   res,
-// ) => {
-//   try {
-//     const id= req.params.id
-//     const { product, description } = req.body as {
-//       product: string
-//       description: string
-//     }
-//        const {recordset} =await db.exec('getProduct',{id})
-//       if(!recordset[0]){
-//          res.json({ message: 'Product Not Found' })
-//       }else{
-//          await  db.exec('updateProduct',{id,product,description})
-//           res.json({message:'Product Updated ...'})
-//       }
-//   } catch (error:any) {
-//       res.json({ error })
-//   }
-// }
-// export const deleteProduct:RequestHandler<{id:string}> =async(req,res)=>{
-//     try {
-//         const id = req.params.id
-//         const {recordset} =await db.exec('getProduct',{id})
-//         if(!recordset[0]){
-//          res.json({ message: 'Product Not Found' })
-//         }else{
-//           // Procedure Way
-//         //   await db.exec('deleteProduct', {id})
-//         // res.json({message:'Product Deleted'})
-//         // Query Way
-//         await db.query(`DELETE FROM Products WHERE id='${id}'`)
-//         res.json({message:'Product Deleted'})
-//       }
-//     } catch (error:any) {
-//        res.json({ error }) 
-//     }
-// }
+const getParcels = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { recordset } = yield db.exec('allParcels');
+        res.json(recordset);
+    }
+    catch (error) {
+        res.json({ error });
+    }
+});
+exports.getParcels = getParcels;
+const getParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const id = req.params.id;
+        const { recordset } = yield db.exec('singleParcel', { id });
+        if (!recordset[0]) {
+            res.json({ message: 'Parcel Not Found' });
+        }
+        else {
+            res.json(recordset);
+        }
+    }
+    catch (error) {
+        res.json({ error });
+    }
+});
+exports.getParcel = getParcel;
+const updateParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const id = req.params.id;
+        const { packageName, destination, senderEmail, receiverEmail, lat, long, weight, price, date } = req.body;
+        const { recordset } = yield db.exec('singleParcel', { id });
+        if (!recordset[0]) {
+            res.json({ message: 'Parcel Not Found' });
+        }
+        else {
+            yield db.exec('updateParcel', { id, packageName, destination, senderEmail, receiverEmail, lat, long, weight, price, date });
+            res.json({ message: 'Parcel Updated ...' });
+        }
+    }
+    catch (error) {
+        res.json({ error });
+    }
+});
+exports.updateParcel = updateParcel;
+const deleteParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const id = req.params.id;
+        const { recordset } = yield db.exec('singleParcel', { id });
+        if (!recordset[0]) {
+            res.json({ message: 'Parcel Not Found' });
+        }
+        else {
+            // Procedure Way
+            yield db.exec('softDeleteParcel', { id });
+            res.json({ message: 'Parcel Deleted' });
+            // Query Way
+            // await db.query(`DELETE FROM parcels WHERE id='${id}'`)
+            // res.json({message:'Product Deleted'})
+        }
+    }
+    catch (error) {
+        res.json({ error });
+    }
+});
+exports.deleteParcel = deleteParcel;
+const statusParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const id = req.params.id;
+        const { recordset } = yield db.exec('singleParcel', { id });
+        if (!recordset[0]) {
+            res.json({ message: 'Parcel Not Found' });
+        }
+        else {
+            yield db.exec('statusParcel', { id });
+            res.json({ message: 'Parcel Delivered' });
+        }
+    }
+    catch (error) {
+        res.json({ error });
+    }
+});
+exports.statusParcel = statusParcel;

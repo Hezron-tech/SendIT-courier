@@ -8,8 +8,14 @@ export const UserSchema= Joi.object({
    
 })
 
+export  const loginSchemas=Joi.object({
+    
+    email:Joi.string().required().email(),
+    password:Joi.string().required().min(8),
+})
+
 export const ParcelSchema= Joi.object({
-    parcelId:Joi.string().required(),
+    id:Joi.string().required(),
     packageName:Joi.string().required(),
     senderEmail:Joi.string().required(),
     receiverEmail:Joi.string().required(),
