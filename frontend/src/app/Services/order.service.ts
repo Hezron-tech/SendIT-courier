@@ -9,20 +9,24 @@ import { Users } from '../Interface/user';
 })
 export class OrderService {
 
-baseurl='http://localhost:3000'
+baseurl='http://localhost:5000'
   
   constructor(private http: HttpClient) { }
 
 
 
+  // getOrders(): Observable<Orders[]> {
+  //   return this.http.get<Orders[]>(`http://localhost:5000/parcel/all`)
+  // }
+
   getOrders(): Observable<Orders[]> {
-    return this.http.get<Orders[]>(`${this.baseurl}/parcels`)
+    return this.http.get<Orders[]>(`${this.baseurl}/parcel/all`)
   }
 
   
 
-  getOrderDetails(id:number): Observable<Orders[]>{
-    return this.http.get<Orders[]>(`${this.baseurl}/orders/${id}`)
+  getOrderDetails(id:number| string): Observable<Orders[]>{
+    return this.http.get<Orders[]>(`${this.baseurl}/parcel/${ id}`)
   }
 
 

@@ -30,6 +30,10 @@ export class AllOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadOrders()
+    this.orders$.subscribe(res=>{
+      console.log(res);
+      
+    })
   }
 
 
@@ -38,6 +42,7 @@ export class AllOrdersComponent implements OnInit {
       this.store.dispatch(Actions.LoadOrders())  
     
     
+
 
   }
 

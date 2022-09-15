@@ -1,10 +1,10 @@
 export interface Orders{
     id?:number
-    packageName:string
-    packageId:string
+    PackageName:string
+    parcelId:string
     destination:string
-    sender:string
-    receiver:string
+    senderEmail:string
+    receiverEmail:string
     price:0
     status:string
     weight:string

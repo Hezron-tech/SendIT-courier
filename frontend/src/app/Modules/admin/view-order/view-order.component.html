@@ -4,11 +4,11 @@
  <div class="con">
     <div class="content" *ngIf=" order$ | async as ord">
         <h2>Package details</h2>
-        <p>Name:{{ord.packageName}}</p>
-        <p>Package Id:  {{ord.packageId}}</p>
+        <p>Name:{{ord.PackageName}}</p>
+        <p>Package Id:  {{ord.parcelId}}</p>
         <p>Destination: {{ord.destination}}</p>
-        <p>Sender: {{ord.sender}}</p>
-        <p>Receiver: {{ord.receiver}}</p>
+        <p>Sender: {{ord.senderEmail}}</p>
+        <p>Receiver: {{ord.receiverEmail}}</p>
         <p>price:{{ord.price}}</p>
         <p>Weight:{{ord.weight}}</p>
         <p>date {{ord.date}}</p>

@@ -61,11 +61,11 @@
 
         </tr>
         <tr *ngFor="let order of orders |search: filterText | paginate:{itemsPerPage:3,currentPage:p};">
-          <td>{{order.packageName}}</td>
-          <td>{{order.packageId}}</td>
+          <td>{{order.PackageName}}</td>
+          <td>{{order.parcelId}}</td>
           <td>{{order.destination}}</td>
-          <td>{{order.sender}}</td>
-          <td>{{order.receiver}}</td>
+          <td>{{order.senderEmail}}</td>
+          <td>{{order.receiverEmail}}</td>
           <td>{{order.price}}</td>
           <td>{{order.weight}}</td>
           <td>{{order.date}}</td>
