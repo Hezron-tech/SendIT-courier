@@ -7,7 +7,7 @@ const db = new Connection();
 interface ExtendedRequest extends Request {
   body: {
     id: string;
-    packageName: string;
+    PackageName: string;
     destination: string;
     senderEmail: string;
     receiverEmail: string;
@@ -22,7 +22,7 @@ export const insertParcel = async (req: ExtendedRequest, res: Response) => {
   try {
     const id = uid();
     const {
-      packageName,
+      PackageName,
       destination,
       senderEmail,
       receiverEmail,
@@ -41,7 +41,7 @@ export const insertParcel = async (req: ExtendedRequest, res: Response) => {
     }
     db.exec("insertUpdateParcel", {
       id,
-      packageName,
+      PackageName,
       destination,
       senderEmail,
       receiverEmail,
@@ -86,59 +86,59 @@ export const getParcel: RequestHandler<{ id: string }> = async (req, res) => {
   }
 };
 
-// export const updateParcel: RequestHandler<{ id: string }> = async (
-//   req,
-//   res
-// ) => {
-//   try {
-//     const id = req.params.id;
-//     const {
-//       packageName,
-//       destination,
-//       senderEmail,
-//       receiverEmail,
-//       lat,
-//       long,
-//       weight,
-//       price,
-//       date,
-//     } = req.body as {
-//       packageName: string;
-//       destination: string;
-//       senderEmail: string;
-//       receiverEmail: string;
-//       lat: string;
-//       long: string;
-//       weight: string;
-//       price: string;
-//       date: string;
-//     };
-//     const { recordset } = await db.exec("singleParcel", { id });
-//     if (!recordset[0]) {
-//       res.status(404)
-//       .json({ message: "Parcel Not Found" });
-//     } else {
-//       await db.exec("insertUpdateParcel", {
-//         id,
-//         packageName,
-//         destination,
-//         senderEmail,
-//         receiverEmail,
-//         lat,
-//         long,
-//         weight,
-//         price,
-//         date,
-//       });
-//       res.status(200)
-//       .json({ message: "Parcel Updated ..." });
-//     }
-//   } catch (error) {
+export const updateParcel: RequestHandler<{ id: string }> = async (
+  req,
+  res
+) => {
+  try {
+    const id = req.params.id;
+    const {
+      PackageName,
+      destination,
+      senderEmail,
+      receiverEmail,
+      lat,
+      long,
+      weight,
+      price,
+      date,
+    } = req.body as {
+      PackageName: string;
+      destination: string;
+      senderEmail: string;
+      receiverEmail: string;
+      lat: string;
+      long: string;
+      weight: string;
+      price: string;
+      date: string;
+    };
+    const { recordset } = await db.exec("singleParcel", { id });
+    if (!recordset[0]) {
+      res.status(404)
+      .json({ message: "Parcel Not Found" });
+    } else {
+      await db.exec("insertUpdateParcel", {
+        id,
+        PackageName,
+        destination,
+        senderEmail,
+        receiverEmail,
+        lat,
+        long,
+        weight,
+        price,
+        date,
+      });
+      res.status(200)
+      .json({ message: "Parcel Updated ..." });
+    }
+  } catch (error) {
 
-//     res.status(500)
-//     .json({ error });
-//   }
-// };
+    res.status(500)
+    .json({ error });
+  }
+};
 
 
 export const updateDelivered: RequestHandler<{ id: string }> = async (req, res) => {
@@ -198,4 +198,61 @@ export const statusParcel: RequestHandler<{ id: string }> = async (
     res.status(500)
     .json({ error });
   }
+};
+
+
+export const sentParcels: RequestHandler<{ senderEmail: string }> = async (
+
+  req,
+
+  res
+
+) => {
+
+  try {
+
+    const senderEmail = req.params.senderEmail;
+
+  
+
+    const { recordset } = await db.exec("getSentparcels", { senderEmail });
+
+    res.status(200).json(recordset);
+
+  } catch (error) {
+
+    res.status(400).json({ message: "Parcels Not Found!" });
+
+  }
+
+};
+
+
+
+
+//received emails
+
+export const receivedParcels: RequestHandler<{ receiverEmail: string }> = async (
+
+  req,
+
+  res
+
+) => {
+
+  try {
+
+    const receiverEmail = req.params.receiverEmail;
+
+
+    const { recordset } = await db.exec("getReceived", { receiverEmail });
+
+    res.status(200).json(recordset);
+
+  } catch (error) {
+
+    res.status(400).json({ message: "No parcels received !" });
+
+  }
+
 };

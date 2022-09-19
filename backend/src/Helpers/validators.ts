@@ -16,7 +16,7 @@ export  const loginSchemas=Joi.object({
 
 export const ParcelSchema= Joi.object({
     
-    packageName:Joi.string().required(),
+    PackageName:Joi.string().required(),
     senderEmail:Joi.string().required(),
     receiverEmail:Joi.string().required(),
     destination:Joi.string().required(),
