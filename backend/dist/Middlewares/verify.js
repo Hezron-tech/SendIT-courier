@@ -11,7 +11,7 @@ const VerifyToken = (req, res, next) => {
     try {
         const token = req.headers['token'];
         if (!token) {
-            return res.json({ message: "not allowed to to login:provide token" });
+            return res.json({ message: "Please login first" });
         }
         const data = jsonwebtoken_1.default.verify(token, process.env.KEY);
         req.info = data;

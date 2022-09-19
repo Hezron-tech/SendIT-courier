@@ -1,16 +1,17 @@
 import { Router } from "express";
 import { deleteParcel, getParcel, getParcels, insertParcel, statusParcel, updateDelivered } from "../Controllers/parcels";
+import { VerifyToken } from "../Middlewares/verify";
 
 
 
 const routers =Router()
 
 routers.post('/new',insertParcel )
-routers.get('/all',getParcels )
-routers.get('/:id',getParcel )
+routers.get('/all', getParcels )
+routers.get('/:id' ,getParcel )
 routers.get("/delete/:id", deleteParcel);
-routers.put("/update/:id", updateDelivered);
-routers.post("/status/:id", statusParcel);
+routers.put("/update/:id",  updateDelivered);
+routers.post("/status/:id",statusParcel);
 
 
 

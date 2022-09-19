@@ -18,7 +18,7 @@ export const VerifyToken =(req:Extended,res:Response, next:NextFunction)=>{
         const token =req.headers['token'] as string
 
         if(!token){
-            return res.json({message:"not allowed to to login:provide token"});
+            return res.json({message:"Please login first"});
             
             
         }
