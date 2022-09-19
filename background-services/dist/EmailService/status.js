@@ -21,7 +21,7 @@ const email_1 = __importDefault(require("../Helpers/email"));
 const SendStatus = () => __awaiter(void 0, void 0, void 0, function* () {
     const pool = yield mssql_1.default.connect(config_1.sqlConfig);
     const parcels = yield (yield pool.request().query(`
-SELECT * FROM parcels WHERE status ='pending'`)).recordset;
+SELECT * FROM parcels WHERE status ='delivered'`)).recordset;
     for (let parcel of parcels) {
         ejs_1.default.renderFile('template/receiver.ejs', { email: parcel.receiverEmail }, (error, data) => __awaiter(void 0, void 0, void 0, function* () {
             let messageoption = {
@@ -32,7 +32,7 @@ SELECT * FROM parcels WHERE status ='pending'`)).recordset;
             };
             try {
                 yield (0, email_1.default)(messageoption);
-                yield pool.request().query(`UPDATE parcels SET status='delivered' WHERE status = 'pending'`);
+                yield pool.request().query(`UPDATE parcels SET status='Arrived' WHERE id='${parcel.id}'`);
                 console.log('Email is Sent');
             }
             catch (error) {

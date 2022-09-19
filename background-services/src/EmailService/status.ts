@@ -23,7 +23,7 @@ interface Parcel{
 const SendStatus= async()=>{
 const pool = await mssql.connect(sqlConfig)
 const parcels:Parcel[]= await(await pool.request().query(`
-SELECT * FROM parcels WHERE status ='pending'`)).recordset
+SELECT * FROM parcels WHERE status ='delivered'`)).recordset
  for(let parcel of parcels){
     ejs.renderFile('template/receiver.ejs',{email:parcel.receiverEmail} ,async(error,data)=>{
         let messageoption={
@@ -36,7 +36,7 @@ SELECT * FROM parcels WHERE status ='pending'`)).recordset
         try {
             
             await sendMail(messageoption)
-            await pool.request().query(`UPDATE parcels SET status='delivered' WHERE status = 'pending'`)
+            await pool.request().query(`UPDATE parcels SET status='Arrived' WHERE id='${parcel.id}'`)
             console.log('Email is Sent');
             
             
