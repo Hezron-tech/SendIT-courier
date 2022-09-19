@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.statusParcel = exports.deleteParcel = exports.updateParcel = exports.getParcel = exports.getParcels = exports.insertParcel = void 0;
+exports.statusParcel = exports.deleteParcel = exports.updateDelivered = exports.getParcel = exports.getParcels = exports.insertParcel = void 0;
 const uuid_1 = require("uuid");
 const db_1 = __importDefault(require("../DatabaseHelpers/db"));
 const validators_1 = require("../Helpers/validators");
@@ -77,38 +77,69 @@ const getParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getParcel = getParcel;
-const updateParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+// export const updateParcel: RequestHandler<{ id: string }> = async (
+//   req,
+//   res
+// ) => {
+//   try {
+//     const id = req.params.id;
+//     const {
+//       packageName,
+//       destination,
+//       senderEmail,
+//       receiverEmail,
+//       lat,
+//       long,
+//       weight,
+//       price,
+//       date,
+//     } = req.body as {
+//       packageName: string;
+//       destination: string;
+//       senderEmail: string;
+//       receiverEmail: string;
+//       lat: string;
+//       long: string;
+//       weight: string;
+//       price: string;
+//       date: string;
+//     };
+//     const { recordset } = await db.exec("singleParcel", { id });
+//     if (!recordset[0]) {
+//       res.status(404)
+//       .json({ message: "Parcel Not Found" });
+//     } else {
+//       await db.exec("insertUpdateParcel", {
+//         id,
+//         packageName,
+//         destination,
+//         senderEmail,
+//         receiverEmail,
+//         lat,
+//         long,
+//         weight,
+//         price,
+//         date,
+//       });
+//       res.status(200)
+//       .json({ message: "Parcel Updated ..." });
+//     }
+//   } catch (error) {
+//     res.status(500)
+//     .json({ error });
+//   }
+// };
+const updateDelivered = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id = req.params.id;
-        const { packageName, destination, senderEmail, receiverEmail, lat, long, weight, price, date, } = req.body;
-        const { recordset } = yield db.exec("singleParcel", { id });
-        if (!recordset[0]) {
-            res.status(404)
-                .json({ message: "Parcel Not Found" });
-        }
-        else {
-            yield db.exec("insertUpdateParcel", {
-                id,
-                packageName,
-                destination,
-                senderEmail,
-                receiverEmail,
-                lat,
-                long,
-                weight,
-                price,
-                date,
-            });
-            res.status(200)
-                .json({ message: "Parcel Updated ..." });
-        }
+        const { recordset } = yield db.exec('updateParcel', { id });
+        return res.json({ message: 'Updated...' });
     }
     catch (error) {
-        res.status(500)
-            .json({ error });
+        res.json({ error });
     }
 });
-exports.updateParcel = updateParcel;
+exports.updateDelivered = updateDelivered;
 const deleteParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id = req.params.id;

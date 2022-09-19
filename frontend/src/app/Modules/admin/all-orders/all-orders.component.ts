@@ -22,27 +22,18 @@ export class AllOrdersComponent implements OnInit {
   
   errorMessage: string = "";
   filterText:string=''
-
-  
-
-  constructor(private router:Router, private orders:OrderService,private fb:FormBuilder, private store:Store,private route:ActivatedRoute,private authService:AuthService) { 
+  constructor(private router:Router, private ordersService:OrderService,private fb:FormBuilder, private store:Store,private route:ActivatedRoute,private authService:AuthService) { 
   }
 
   ngOnInit(): void {
     this.loadOrders()
-    this.orders$.subscribe(res=>{
-      console.log(res);
-      
-    })
+  
   }
 
 
   loadOrders(){
     
-      this.store.dispatch(Actions.LoadOrders())  
-    
-    
-
+      this.store.dispatch(Actions.LoadOrders()) 
 
   }
 
@@ -50,19 +41,22 @@ export class AllOrdersComponent implements OnInit {
   create(){
 this.router.navigate(['admin/create'])
   }
-  viewDetails(id:number =0){
+
+
+  viewDetails(id:string){
     this.store.dispatch(Actions.SelectedId({id}));
     this.router.navigate([`/admin/view/${id}`],{
        relativeTo:this.route
     })
+console.log(id);
 
   }
 
-  DeleteDetails(id:number=0){
-
-    this.store.dispatch(Actions.DeleteOrder({id}))
-    this.store.dispatch(Actions.LoadOrders())
-
+  DeleteDetails(id:string){
+this.ordersService.deleteOrder(id).subscribe(res=>{
+ this.loadOrders()
+})
+    
   }
 
   logout(){

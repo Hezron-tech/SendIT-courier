@@ -32,15 +32,15 @@ export class OrderEffectsService {
 })
 
 
-  deleteOrder = createEffect(()=>{
-    return this.actions.pipe(
-      ofType(OrdersAction.DeleteOrder),
-      mergeMap(action=>this.orderService.deleteOrder(action.id).pipe(
-        map(res=>OrdersAction.DeleteOrderSuccess({deletemessage:res.message})),
-        catchError(error=>of(OrdersAction.DeleteOrderFailure({error:error.message})))
-      ))
-    )
-  })
+  // deleteOrder = createEffect(()=>{
+  //   return this.actions.pipe(
+  //     ofType(OrdersAction.DeleteOrder),
+  //     mergeMap(action=>this.orderService.deleteOrder(action.id).pipe(
+  //       map(res=>OrdersAction.DeleteOrderSuccess({deletemessage:res.message})),
+  //       catchError(error=>of(OrdersAction.DeleteOrderFailure({error:error.message})))
+  //     ))
+  //   )
+  // })
 
   
 
@@ -48,23 +48,6 @@ export class OrderEffectsService {
 
   //users
 
-  addCustomer=createEffect(()=>{
-
-    return this.actions.pipe(
-
-        ofType(OrdersAction.RegisterCustomer),
-
-        mergeMap(action=>this.orderService.registerUser(action.newCustomer).pipe(
-
-            map(res=>OrdersAction.RegisterCustomerSuccess({addMessage:res.message})),
-
-            catchError(error=>of(OrdersAction.RegisterCustomerFailure({error:error})))
-
-        ))
-
-    )
-
-})
    
   
 }

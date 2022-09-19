@@ -48,28 +48,35 @@
       <table style="width:100%" *ngIf="orders$|async  as orders">
         <tr>
           <th>Package Name</th>
-          <th>Package Id</th>
+          <!-- <th>Package Id</th> -->
           <th>Destination</th>
-          <th>Sender</th>
+          <!-- <th>Sender</th>
           <th>Receiver</th>
           <th>Price</th>
           <th>Weight</th>
           <th>date</th>
           <th>Status</th>
-          <th> Details</th>
-          <th>Actions</th>
+         
+           -->
+           <th> Details</th>
+          <th>Actions</th> 
+         
+
+
 
         </tr>
         <tr *ngFor="let order of orders |search: filterText | paginate:{itemsPerPage:3,currentPage:p};">
           <td>{{order.PackageName}}</td>
-          <td>{{order.parcelId}}</td>
+          <!-- <td>{{order.parcelId}}</td> -->
           <td>{{order.destination}}</td>
-          <td>{{order.senderEmail}}</td>
+          <!-- <td>{{order.senderEmail}}</td>
           <td>{{order.receiverEmail}}</td>
           <td>{{order.price}}</td>
           <td>{{order.weight}}</td>
           <td>{{order.date}}</td>
           <td class="pending">{{order.status}}</td>
+         
+          -->
           <td><button (click)="viewDetails(order.id)" class="view-button">View Details</button></td>
           <td><button (click)="DeleteDetails(order.id)" class="view-button">Delete</button></td>
         </tr>

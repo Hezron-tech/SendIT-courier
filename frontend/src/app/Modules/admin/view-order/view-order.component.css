@@ -1,13 +1,10 @@
 .content{
-    box-sizing: border-box;
-
-    background-color: #7BC4B2;
-    height: 600px;
-    width: 500px;
-    margin: auto;
-    margin-top: 2rem;
-    
+   text-align: center;
+    display: flex;
    
+    margin-top: 2rem;
+    text-align: center; 
+  
     
 }
 
@@ -19,15 +16,16 @@ h2{
 
 
 p{
-    color: black;
+    color: white;
     font-size: 20px;
     padding-left: 2rem;
 }
 
-button{
+.bt{
     background-color: brown;
     border-radius: 3px;
     color: #fff;
+   align-items: center;
     
     margin-left: 4rem;
 }
@@ -36,10 +34,18 @@ button{
     margin-top: 2rem;
 }
 .con{
-    display: flex;
-    justify-content: space-evenly;
+   
+    text-align: center;
+    background-color: blueviolet;
+    height: 400px;
+    width: 800px;
+    color: white;
+    margin: auto;
+    box-sizing: border-box;
+    margin-bottom: 2rem;
 }
 
 .map{
+   
     margin-left: 2rem;
 }

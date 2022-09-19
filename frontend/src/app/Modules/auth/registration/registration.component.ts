@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as Actions from '../../admin/Redux/Actions/orderActions'
@@ -10,10 +10,10 @@ import * as Actions from '../../admin/Redux/Actions/orderActions'
 })
 export class RegistrationComponent implements OnInit {
 
-  addForms!: UntypedFormGroup;
+  addForms!: FormGroup;
   // registrationSuccess=false
 
-  constructor(private fb:UntypedFormBuilder,private store:Store,private router:Router) { }
+  constructor(private fb:FormBuilder,private store:Store,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -30,8 +30,7 @@ export class RegistrationComponent implements OnInit {
   
     addUser(){
 
-      this.store.dispatch(Actions.RegisterCustomer({newCustomer: this.addForms.value}))
-    
+     
       // this.router.navigate(['/admin/login'])
     
     }
@@ -44,7 +43,7 @@ export class RegistrationComponent implements OnInit {
 
 
 
-  checkPassword(control:UntypedFormControl){
+  checkPassword(control:FormControl){
     const value=control.value
      const special=/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]+/.test(value)
      return !special? {special:true} :null

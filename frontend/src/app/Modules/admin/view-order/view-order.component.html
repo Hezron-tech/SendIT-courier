@@ -1,23 +1,34 @@
 <div class="single-details">
   <button class="back" (click)="goback()">Go back</button>
 
- <div class="con">
-    <div class="content" *ngIf=" order$ | async as ord">
-        <h2>Package details</h2>
-        <p>Name:{{ord.PackageName}}</p>
-        <p>Package Id:  {{ord.parcelId}}</p>
-        <p>Destination: {{ord.destination}}</p>
-        <p>Sender: {{ord.senderEmail}}</p>
-        <p>Receiver: {{ord.receiverEmail}}</p>
+ <div class="con" *ngIf=" order$ | async as ord">
+  <h2>Package details</h2>
+    <div class="content" *ngFor="let ord of ord">
+        <div class="div1">
+          
+          <p>{{ord.PackageName}}</p>  
+          <p>Destination: {{ord.destination}}</p>
+          <p>Sender: {{ord.senderEmail}}</p>
+          <p>Receiver: {{ord.receiverEmail}}</p>
+        </div>
+       <div class="div2">
+       
         <p>price:{{ord.price}}</p>
         <p>Weight:{{ord.weight}}</p>
         <p>date {{ord.date}}</p>
         <p>Status: {{ord.status}}</p>
-        <button>Update status</button>
+       </div>
+       
       </div>
-    <div class="map">
-        <app-map></app-map>
-    </div>
+
+      <button class="bt">Update status</button>
+      
+     
+    
  </div>
+ <div class="map">
+  <app-map></app-map>    
+</div>
+ 
   
 </div>

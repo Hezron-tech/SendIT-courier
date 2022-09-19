@@ -25,30 +25,25 @@ baseurl='http://localhost:5000'
 
   
 
-  getOrderDetails(id:number| string): Observable<Orders[]>{
+  getOrderDetails(id:string): Observable<Orders[]>{
     return this.http.get<Orders[]>(`${this.baseurl}/parcel/${ id}`)
   }
 
 
   createOrder(order:Orders): Observable<{message:string}>{
-    return this.http.post<{message:string}> (`${this.baseurl}/parcels/`,order)
+    return this.http.post<{message:string}> (`${this.baseurl}/parcel/new`,order)
+    
   }
 
 
   
-  deleteOrder(id:number): Observable<{message:string}>{
-    return this.http.delete<{message:string}> (`${this.baseurl}/parcels/${id}`)
+  deleteOrder(id:string): Observable<Orders[]>{
+    return this.http.get<Orders[]>(`${this.baseurl}/parcel/delete/${id}`)
+    
   }
 
 
+ 
 
 
-  
-
-  registerUser(user:Users): Observable<{message:string}>{
-    return this.http.post<{message:string}> (`${this.baseurl}/customers/`,user)
   }
-
-
-
-}

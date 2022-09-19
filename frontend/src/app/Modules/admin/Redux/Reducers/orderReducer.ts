@@ -11,7 +11,7 @@ import * as Actions from '../Actions/orderActions';
 export interface OrderState {
   orders: Orders[];
   ordersErrror: string;
-  orderId: number;
+  orderId: string;
   error: string;
   deleteMessage: string;
   addMessage: string;
@@ -21,7 +21,7 @@ export interface OrderState {
 const initialState: OrderState = {
   orders: [],
   ordersErrror: '',
-  orderId: 0,
+  orderId: '',
   error: '',
   deleteMessage: '',
   addMessage: '',
@@ -83,13 +83,5 @@ export const OrderReducer = createReducer(
 
 
 
-  ,on(Actions.RegisterCustomerSuccess,(state,action):OrderState=>{
-
-    return{...state, addMessage:action.addMessage}
-
-}),on(Actions.RegisterCustomerFailure,(state,action):OrderState=>{
-
-    return{...state, error:action.error}
-
-}),
+  
 )
