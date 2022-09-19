@@ -2,13 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const parcels_1 = require("../Controllers/parcels");
+const verify_1 = require("../Middlewares/verify");
 const routers = (0, express_1.Router)();
-routers.post('/new', parcels_1.insertParcel);
+routers.post('/new', verify_1.VerifyToken, parcels_1.insertParcel);
 routers.get('/all', parcels_1.getParcels);
 routers.get('/receive/:receiverEmail', parcels_1.receivedParcels);
 routers.get('/sent/:senderEmail', parcels_1.sentParcels);
 routers.get('/:id', parcels_1.getParcel);
-routers.get("/delete/:id", parcels_1.deleteParcel);
+routers.delete("/delete/:id", parcels_1.deleteParcel);
 routers.put("/updatestatus/:id", parcels_1.updateDelivered);
 routers.post("/update/:id", parcels_1.updateParcel);
 routers.post("/status/:id", parcels_1.statusParcel);

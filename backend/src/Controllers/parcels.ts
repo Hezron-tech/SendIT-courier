@@ -35,9 +35,7 @@ export const insertParcel = async (req: ExtendedRequest, res: Response) => {
 
     const { error, value } = ParcelSchema.validate(req.body);
     if (error) {
-      return res
-      .status(500)
-      .json({ error: error.details[0].message });
+      return res.status(500).json({ error: error.details[0].message });
     }
     db.exec("insertUpdateParcel", {
       id,
@@ -52,9 +50,7 @@ export const insertParcel = async (req: ExtendedRequest, res: Response) => {
       date,
     });
 
-    res
-    .status(200)
-    .json({ message: "Parcel Inserted Successfully" });
+    res.status(200).json({ message: "order created Successfully" });
   } catch (error) {
     res.status(500).json({ error });
   }
@@ -65,8 +61,7 @@ export const getParcels: RequestHandler = async (req, res) => {
     const { recordset } = await db.exec("allParcels");
     res.json(recordset);
   } catch (error) {
-    res.status(500)
-    .json({ error });
+    res.status(500).json({ error });
   }
 };
 
@@ -75,14 +70,12 @@ export const getParcel: RequestHandler<{ id: string }> = async (req, res) => {
     const id = req.params.id;
     const { recordset } = await db.exec("singleParcel", { id });
     if (!recordset[0]) {
-      res.status(404)
-      .json({ message: "Parcel Not Found" });
+      res.status(404).json({ message: "Parcel Not Found" });
     } else {
       res.json(recordset);
     }
   } catch (error) {
-    res.status(500)
-    .json({ error });
+    res.status(500).json({ error });
   }
 };
 
@@ -115,8 +108,7 @@ export const updateParcel: RequestHandler<{ id: string }> = async (
     };
     const { recordset } = await db.exec("singleParcel", { id });
     if (!recordset[0]) {
-      res.status(404)
-      .json({ message: "Parcel Not Found" });
+      res.status(404).json({ message: "Parcel Not Found" });
     } else {
       await db.exec("insertUpdateParcel", {
         id,
@@ -130,28 +122,25 @@ export const updateParcel: RequestHandler<{ id: string }> = async (
         price,
         date,
       });
-      res.status(200)
-      .json({ message: "Parcel Updated ..." });
+      res.status(200).json({ message: "Parcel Updated ..." });
     }
   } catch (error) {
-
-    res.status(500)
-    .json({ error });
+    res.status(500).json({ error });
   }
 };
 
-
-export const updateDelivered: RequestHandler<{ id: string }> = async (req, res) => {
+export const updateDelivered: RequestHandler<{ id: string }> = async (
+  req,
+  res
+) => {
   try {
-    const id = req.params.id  
-    const {recordset} =await db.exec('updateParcel',{id})
-return res.json({message:'Updated...'})
+    const id = req.params.id;
+    const { recordset } = await db.exec("updateParcel", { id });
+    return res.json({ message: "Updated..." });
   } catch (error) {
-    res.json({ error })
+    res.json({ error });
   }
-}
-
-
+};
 
 export const deleteParcel: RequestHandler<{ id: string }> = async (
   req,
@@ -161,23 +150,18 @@ export const deleteParcel: RequestHandler<{ id: string }> = async (
     const id = req.params.id;
     const { recordset } = await db.exec("singleParcel", { id });
     if (!recordset[0]) {
-      res.status(404)
-      .json({ message: "Parcel Not Found" });
+      res.status(404).json({ message: "Parcel Not Found" });
     } else {
       // Procedure Way
       await db.exec("softDeleteParcel", { id });
       res.json({ message: "Parcel Deleted" });
 
-      // Query Way
-      // await db.query(`DELETE FROM parcels WHERE id='${id}'`)
-      // res.json({message:'Product Deleted'})
+     
     }
   } catch (error: any) {
     res.json({ error });
   }
 };
-
-
 
 export const statusParcel: RequestHandler<{ id: string }> = async (
   req,
@@ -187,72 +171,48 @@ export const statusParcel: RequestHandler<{ id: string }> = async (
     const id = req.params.id;
     const { recordset } = await db.exec("singleParcel", { id });
     if (!recordset[0]) {
-      res.status(404)
-      .json({ message: "Parcel Not Found" });
+      res.status(404).json({ message: "Parcel Not Found" });
     } else {
       await db.exec("statusParcel", { id });
       res.json({ message: "Parcel Delivered" });
     }
   } catch (error) {
-
-    res.status(500)
-    .json({ error });
+    res.status(500).json({ error });
   }
 };
 
-
 export const sentParcels: RequestHandler<{ senderEmail: string }> = async (
-
   req,
 
   res
-
 ) => {
-
   try {
-
     const senderEmail = req.params.senderEmail;
-
-  
 
     const { recordset } = await db.exec("getSentparcels", { senderEmail });
 
     res.status(200).json(recordset);
-
   } catch (error) {
-
     res.status(400).json({ message: "Parcels Not Found!" });
-
   }
-
 };
-
-
-
 
 //received emails
 
-export const receivedParcels: RequestHandler<{ receiverEmail: string }> = async (
-
+export const receivedParcels: RequestHandler<{
+  receiverEmail: string;
+}> = async (
   req,
 
   res
-
 ) => {
-
   try {
-
     const receiverEmail = req.params.receiverEmail;
-
 
     const { recordset } = await db.exec("getReceived", { receiverEmail });
 
     res.status(200).json(recordset);
-
   } catch (error) {
-
     res.status(400).json({ message: "No parcels received !" });
-
   }
-
 };

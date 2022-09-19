@@ -23,9 +23,7 @@ const insertParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const { PackageName, destination, senderEmail, receiverEmail, lat, long, weight, price, date, } = req.body;
         const { error, value } = validators_1.ParcelSchema.validate(req.body);
         if (error) {
-            return res
-                .status(500)
-                .json({ error: error.details[0].message });
+            return res.status(500).json({ error: error.details[0].message });
         }
         db.exec("insertUpdateParcel", {
             id,
@@ -39,9 +37,7 @@ const insertParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             price,
             date,
         });
-        res
-            .status(200)
-            .json({ message: "Parcel Inserted Successfully" });
+        res.status(200).json({ message: "order created Successfully" });
     }
     catch (error) {
         res.status(500).json({ error });
@@ -54,8 +50,7 @@ const getParcels = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         res.json(recordset);
     }
     catch (error) {
-        res.status(500)
-            .json({ error });
+        res.status(500).json({ error });
     }
 });
 exports.getParcels = getParcels;
@@ -64,16 +59,14 @@ const getParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const id = req.params.id;
         const { recordset } = yield db.exec("singleParcel", { id });
         if (!recordset[0]) {
-            res.status(404)
-                .json({ message: "Parcel Not Found" });
+            res.status(404).json({ message: "Parcel Not Found" });
         }
         else {
             res.json(recordset);
         }
     }
     catch (error) {
-        res.status(500)
-            .json({ error });
+        res.status(500).json({ error });
     }
 });
 exports.getParcel = getParcel;
@@ -83,8 +76,7 @@ const updateParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const { PackageName, destination, senderEmail, receiverEmail, lat, long, weight, price, date, } = req.body;
         const { recordset } = yield db.exec("singleParcel", { id });
         if (!recordset[0]) {
-            res.status(404)
-                .json({ message: "Parcel Not Found" });
+            res.status(404).json({ message: "Parcel Not Found" });
         }
         else {
             yield db.exec("insertUpdateParcel", {
@@ -99,21 +91,19 @@ const updateParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* (
                 price,
                 date,
             });
-            res.status(200)
-                .json({ message: "Parcel Updated ..." });
+            res.status(200).json({ message: "Parcel Updated ..." });
         }
     }
     catch (error) {
-        res.status(500)
-            .json({ error });
+        res.status(500).json({ error });
     }
 });
 exports.updateParcel = updateParcel;
 const updateDelivered = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id = req.params.id;
-        const { recordset } = yield db.exec('updateParcel', { id });
-        return res.json({ message: 'Updated...' });
+        const { recordset } = yield db.exec("updateParcel", { id });
+        return res.json({ message: "Updated..." });
     }
     catch (error) {
         res.json({ error });
@@ -125,16 +115,12 @@ const deleteParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const id = req.params.id;
         const { recordset } = yield db.exec("singleParcel", { id });
         if (!recordset[0]) {
-            res.status(404)
-                .json({ message: "Parcel Not Found" });
+            res.status(404).json({ message: "Parcel Not Found" });
         }
         else {
             // Procedure Way
             yield db.exec("softDeleteParcel", { id });
             res.json({ message: "Parcel Deleted" });
-            // Query Way
-            // await db.query(`DELETE FROM parcels WHERE id='${id}'`)
-            // res.json({message:'Product Deleted'})
         }
     }
     catch (error) {
@@ -147,8 +133,7 @@ const statusParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const id = req.params.id;
         const { recordset } = yield db.exec("singleParcel", { id });
         if (!recordset[0]) {
-            res.status(404)
-                .json({ message: "Parcel Not Found" });
+            res.status(404).json({ message: "Parcel Not Found" });
         }
         else {
             yield db.exec("statusParcel", { id });
@@ -156,8 +141,7 @@ const statusParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         }
     }
     catch (error) {
-        res.status(500)
-            .json({ error });
+        res.status(500).json({ error });
     }
 });
 exports.statusParcel = statusParcel;

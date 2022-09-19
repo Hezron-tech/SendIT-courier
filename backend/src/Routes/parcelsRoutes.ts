@@ -6,12 +6,12 @@ import { VerifyToken } from "../Middlewares/verify";
 
 const routers =Router()
 
-routers.post('/new',insertParcel )
+routers.post('/new', VerifyToken,insertParcel )
 routers.get('/all', getParcels )
 routers.get('/receive/:receiverEmail',receivedParcels )
 routers.get('/sent/:senderEmail',sentParcels )
 routers.get('/:id' ,getParcel )
-routers.get("/delete/:id", deleteParcel);
+routers.delete("/delete/:id", deleteParcel);
 routers.put("/updatestatus/:id",  updateDelivered);
 routers.post("/update/:id",updateParcel);
 routers.post("/status/:id",statusParcel);
