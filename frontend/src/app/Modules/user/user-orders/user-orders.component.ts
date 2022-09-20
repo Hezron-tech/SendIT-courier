@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { Store } from '@ngrx/store';
+import { getOrders } from '../../admin/Redux/Reducers/orderReducer';
+import * as Actions from '../../admin/Redux/Actions/orderActions'
 @Component({
   selector: 'app-user-orders',
   templateUrl: './user-orders.component.html',
@@ -8,14 +10,45 @@ import { Router } from '@angular/router';
 })
 export class UserOrdersComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  token:string=''
+  email:string=''
+  ordersreceived:any;
+  orderssent:any;
+  orders$=this.store.select(getOrders)
+
+  constructor(private router:Router,private store:Store) { }
 
   ngOnInit(): void {
+
+    this.store.dispatch(Actions.LoadOrders());
+    this.orders$.subscribe((data)=>{
+      console.log(data);
+      
+      this.email= localStorage.getItem('email')!;
+      console.log(this.email);
+      this.ordersreceived= data.filter((own)=>{
+        return own.receiverEmail==this.email
+      });
+      this.orderssent= data.filter((own)=>{
+        return own.senderEmail==this.email
+
+        
+        
+      });
+     
+     
+      
+      
+      console.log(this.orderssent);
+      
+    });
+  ;
   }
-
-
   details(){
 this.router.navigate(['user/order/details'])
   }
+
+
+  
 
 }

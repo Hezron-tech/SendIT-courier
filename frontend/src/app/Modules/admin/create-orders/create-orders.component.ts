@@ -20,13 +20,12 @@ export class CreateOrdersComponent implements OnInit {
 
     this.projectForms=this.fb.group({
 
-      packageName:[null,[Validators.required]],
-      packageId:[null,[Validators.required]],
+      PackageName:[null,[Validators.required]],
+      
       destination:[null,[Validators.required]],
-      sender:[null,[Validators.required]],
-      receiver:[null,[Validators.required]], 
+      senderEmail:[null,[Validators.required]],
+      receiverEmail:[null,[Validators.required]], 
       price:[null,[Validators.required]], 
-      status:[null,[Validators.required]], 
       weight:[null,[Validators.required]],
       date:[null,[Validators.required]],   
 

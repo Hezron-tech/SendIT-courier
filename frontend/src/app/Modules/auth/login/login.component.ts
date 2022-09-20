@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
+import { LoginService } from 'src/app/Services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -10,31 +11,46 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class LoginComponent implements OnInit {
   @ViewChild ('form') form!:NgForm;
-  constructor(private authService:AuthService,private router:Router) {
-    localStorage.setItem("email",'admin@gmail.com')
-    localStorage.setItem("password",'1234')
+  constructor(private loginService:LoginService,private router:Router) {
+  
    }
 
   ngOnInit(): void {
   }
 
+
+
   onSubmit(){
 
-  let email=localStorage.getItem("email")
-  let password=localStorage.getItem("password")
-    const token = localStorage.setItem('token','qwertyuikolwertyuikl;wertyui')
+    console.log(this.form.value);
 
-    const user = this.form.value
-    if(user.email===email || user.password===password){
+    if(this.form.valid){
+    this.loginService.loginUser(this.form.value).subscribe(response=>{
 
-      this.router.navigate(['admin/all'])
+      localStorage.setItem('token',response.token)
 
+      localStorage.setItem('username',response.user.username)
+      localStorage.setItem('email',response.user.email)
 
-    }else{
-      this.router.navigate(['user/orders'])
-    }
+      console.log(response);
+      
+
+      console.log(response.user.role);
+      
+      if(response.user.role==='Admin'){
+        this.router.navigate(['/admin/all'])
+
+      }
+      else{
+        this.router.navigate(['/user/orders'])
+      }
+      
+     
+     
+    })
+ 
    
     
   }
 
-}
+  }}

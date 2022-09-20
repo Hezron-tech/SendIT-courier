@@ -21,7 +21,7 @@
                 <input type="text" formControlName="username" name="username" placeholder="Enter your username" >
                 <div *ngIf="!addForms.get('username')!.valid && addForms.get('username')!.touched">
                     <p class="error" *ngIf="addForms.get('username')!.errors!['required']">
-                      *Name is required.
+                      *UserName is required.
                     </p>
                   </div>
             </div>

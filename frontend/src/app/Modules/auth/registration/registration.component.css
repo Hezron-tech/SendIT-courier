@@ -1,6 +1,6 @@
 
 .register{
-    background-color: #F5F5DC;
+    background-color: white;
     justify-content: center;
     align-items: center;
     
@@ -41,8 +41,16 @@ h4{
     padding-top: 3rem;
 }
 .fields{
+    align-items: center;
     display: flex;
-    justify-content: space-evenly;
+    margin: auto;
+    height: 800px;
+    box-sizing: border-box;
+    margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+   
 
 }.email{
     margin-left: 2rem;
@@ -86,7 +94,8 @@ img{
 }
 
 .reg-image{
-    padding-top: 2rem;
+    padding-top: 1rem;
+    margin-left: 1rem;
 }
 
 .error{

@@ -4,6 +4,12 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { OrderEffectsService } from '../admin/Redux/Effects/order-effects.service';
+import { OrderReducer } from '../admin/Redux/Reducers/orderReducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -13,7 +19,10 @@ import { UserDetailsComponent } from './user-details/user-details.component';
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    StoreModule.forFeature('orders', OrderReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forFeature([OrderEffectsService])
   ]
 })
 export class UserModule { }

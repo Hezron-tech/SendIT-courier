@@ -12,21 +12,14 @@
       <div class="display">
         <div class="form-one">
           <p>Package Name</p>
-          <input type="text" formControlName="packageName" class="form-control">
-          <div *ngIf="!projectForms.get('packageName')!.valid && projectForms.get('packageName')!.touched">
-            <p class="error" *ngIf="projectForms.get('packageName')!.errors!['required']">
+          <input type="text" formControlName="PackageName" class="form-control">
+          <div *ngIf="!projectForms.get('PackageName')!.valid && projectForms.get('PackageName')!.touched">
+            <p class="error" *ngIf="projectForms.get('PackageName')!.errors!['required']">
               *Package name is required.
             </p> 
           </div>
-          <p>Package Id</p>
-          <input type="text" formControlName="packageId" class="form-control">
-
-          <div *ngIf="!projectForms.get('packageId')!.valid && projectForms.get('packageId')!.touched">
-            <p class="error" *ngIf="projectForms.get('packageId')!.errors!['required']">
-              * please provide Package Id.
-            </p> 
-          </div>
-          <p>Destination </p>
+          
+          <p>Destination</p>
           <input type="text" formControlName="destination" class="form-control">
           <div *ngIf="!projectForms.get('destination')!.valid && projectForms.get('destination')!.touched">
             <p class="error" *ngIf="projectForms.get('destination')!.errors!['required']">
@@ -35,31 +28,35 @@
           </div>
           
           <p>Sender</p>
-          <select formControlName="sender" class="form-control">
-            <option value="hezzy@gmail.com">hezzy@gmail.com</option>
-            <option value="kip@gmail.com">kip@gmail.com</option>
-           </select>
+          <input type="text" formControlName="senderEmail" class="form-control">
+          <div *ngIf="!projectForms.get('senderEmail')!.valid && projectForms.get('senderEmail')!.touched">
+            <p class="error" *ngIf="projectForms.get('senderEmail')!.errors!['required']">
+              * Email cannot be empty!!.
+            </p> 
+          </div>
+          
 
         </div>
         <div class="form-two">
           <p>Receiver</p>
-          <select formControlName="receiver" class="form-control">
-            <option value="hezzy@gmail.com">hezzy@gmail.com</option>
-            <option value="kip@gmail.com">kip@gmail.com</option>
-           </select>
+          <input type="text" formControlName="receiverEmail" class="form-control">
+          <div *ngIf="!projectForms.get('receiverEmail')!.valid && projectForms.get('receiverEmail')!.touched">
+            <p class="error" *ngIf="projectForms.get('receiverEmail')!.errors!['required']">
+              * Email cannot be empty!!.
+            </p> 
+          </div>
+
+
            <p> Weight</p>
            <input type="text" formControlName="weight" class="form-control">
-
+           <div *ngIf="!projectForms.get('weight')!.valid && projectForms.get('weight')!.touched">
+            <p class="error" *ngIf="projectForms.get('weight')!.errors!['required']">
+              * Weight cannot be empty!!.
+            </p> 
+          </div>
+      
           <p>Price</p>
-          <input type="text" formControlName="price" class="form-control">
-
-         
-          <p>Status</p>
-         <select formControlName="status" class="form-control">
-          <option value="pending">Pending</option>
-          <option value="delivered">delivered</option>
-         </select>
-          
+          <input type="text" formControlName="price" class="form-control"> 
         </div>
         
       </div>

@@ -4,8 +4,12 @@ export interface Orders {
   destination: string;
   senderEmail: string;
   receiverEmail: string;
-  price: 0;
+  price:number
+  isDeleted:string
+  transit:string
+  lat:string
+  long:string
   status: string;
-  weight: string;
+  weight: number;
   date: string;
 }
