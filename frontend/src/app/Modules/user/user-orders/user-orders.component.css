@@ -1,11 +1,16 @@
 .user{
     margin: auto;
-    width: 900px;
+    width: 60%;
+   
 }
 
   table{
     background-color: antiquewhite;
     margin-top: 1rem;
+    
+  }
+  h1{
+    text-align: center;
   }
 
   th{
@@ -14,11 +19,13 @@
     border: 2px solid black;
     font-size: 20px;
     text-align: center;
+    padding: 20px;
   }
 
   td{
     text-align: center;
     border: 1px solid black;
+    padding: 20px;
   }
 
   .view-button{
@@ -26,6 +33,7 @@
     background-color: red;
     border-radius: 15px;
     color: white;
+    width: 100%;
   }
 
   .pagination {
@@ -41,11 +49,12 @@
     text-decoration: none;
   }
   .sent{
-    padding-top: 4rem;
+    padding-top: 1rem;
   }
 
   .received{
-    padding-top: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
   h1{
     padding-bottom: 2rem;
@@ -62,4 +71,8 @@
     padding: 0;
     border-radius: 15px;
     background-color: red;
+  }
+
+  button{
+    padding: 1rem;
   }

@@ -23,8 +23,7 @@ const insertParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const { PackageName, destination, senderEmail, receiverEmail, lat, long, weight, price, date, } = req.body;
         const { error, value } = validators_1.ParcelSchema.validate(req.body);
         if (error) {
-            return res.status(500)
-                .json({ error: error.details[0].message });
+            return res.status(500).json({ error: error.details[0].message });
         }
         db.exec("insertUpdateParcel", {
             id,
@@ -63,7 +62,7 @@ const getParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             res.status(404).json({ message: "Parcel Not Found" });
         }
         else {
-            res.json(recordset);
+            res.json(recordset[0]);
         }
     }
     catch (error) {
@@ -71,6 +70,24 @@ const getParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getParcel = getParcel;
+// export const getParcel: RequestHandler<{ id: string }> = async (req, res) => {
+//   try {
+//     const id = req.params.id;
+//     const pool = await mssql.connect(sqlConfig);
+//     const project = await pool
+//       .request()
+//       .input("id", mssql.VarChar, id)
+//       .execute("singleParcel");
+//     const { recordset } = project;
+//     if (!project.recordset[0]) {
+//       res.json({ message: "Project Not Found" });
+//     } else {
+//       res.json(recordset[0]);
+//     }
+//   } catch (error) {
+//     res.json({ error });
+//   }
+// };
 const updateParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id = req.params.id;

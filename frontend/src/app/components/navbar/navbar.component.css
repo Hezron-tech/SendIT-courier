@@ -4,7 +4,8 @@
     display: flex;
     justify-content: space-evenly;
     text-align: center;
-    background-color:#7BC4B2;
+    background-color: rgb(136, 136, 42);
+    padding-top: 1rem;
 }
 
 ul{
@@ -26,5 +27,12 @@ li{
     background-color: #F1686C;
     box-shadow: none;
     border: none;
+}
+
+.log{
+    
+    padding: 0.4rem;
+    border-radius: 15px;
+    font-size: 20px;
 }
 

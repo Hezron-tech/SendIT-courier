@@ -1,7 +1,8 @@
 .login{
     margin: auto;
     width: 50%;
-    background-color: beige;
+    background-color:white;
+    height: auto;
    
 }
 
@@ -21,7 +22,7 @@
 p{
    
     padding-bottom: 1rem;
-    color: white;
+    color: black;
     font-size: 20px;
 }
 
@@ -32,28 +33,31 @@ input{
 }
 
 .login-details{
-    height: 445px;
+    height: 455px;
     background-color: #4057A9;
     width: 334px;
     border-radius: 15px;
     padding-top: 1rem;
+    margin-left: 4rem;
 }
 
 button{
     border-radius: 15px;
-    width: 100%;
-    margin-top: 2rem;
+    width: 80%;
+    margin-top: 1rem;
+    font-size: 20px;
+    padding: 0.5rem;
 
     margin-bottom: 2rem;
 }
 
 .login-image{
-    background-color: white;
+    background-color: rgb(136, 136, 42);
     border-radius: 15px;
 }
 
 a{
-    color: red;
+    color: white;
 }
 
 .form-control{
@@ -71,3 +75,9 @@ input.ng-valid.ng-touched{
     border:2px solid green ;
 }
 
+placeholder{
+    padding: 2rem;
+}
+.login-details p{
+    color: white;
+}

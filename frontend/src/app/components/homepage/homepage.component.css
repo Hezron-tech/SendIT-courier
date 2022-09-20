@@ -1,6 +1,10 @@
 .section{
-    background-color:#7BC4B2;
+    background-color: white;
     
+}
+.containerr{
+    /* background-color: rgb(136, 136, 42);  */
+    background-color: white;
 }
 .para{
     color: black;
@@ -43,9 +47,15 @@
 
 .star-one{
     padding: 30px;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     border-radius: 5px;
-    background-color: #7BC4B2
+    background-color: rgb(136, 136, 42); 
+}
+.cart p{
+    font-size: 20px;
+}
+p{
+    font-size: 20px;
 }
 
 .star-one img{
@@ -63,7 +73,7 @@ h1{
 }
 
 .story{
-    color: #FA393D;
+    color: black;
 }
 .touch{
     
@@ -111,8 +121,8 @@ footer{
     width: 100%;
     border-radius: 15px;
     background-color: #FA393D;
-    color: #fff;
+    color: black;
 }
 h2{
-    color: #FA393D ;
+    color: black ;
 }

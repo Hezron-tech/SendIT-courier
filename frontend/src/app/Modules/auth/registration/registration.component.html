@@ -1,75 +1,80 @@
 <div class="register">
-<h4>Please Register Here with your details</h4>
-<div class="signup">
-    <button>
-        <img src="/assets/google.svg" width="35px" alt=""> <span>Sign Up with Google</span>
-    </button>
-    <p>or</p>
-    <button>
-        <img src="/assets/facebook.svg" width="35px" alt=""> <span>Sign Up with facebook</span>
-    </button>
-</div>
+  <h4>Please Register Here with your details</h4>
+  <div class="fields">
+    <div class="reg">
+      <form class="inputs" [formGroup]="addForms" (ngSubmit)="addUser()">
+        <div class="username">
+          <p>Username</p>
+          <input
+            type="text"
+            formControlName="username"
+            name="username"
+            placeholder="Enter your username"
+          />
+          <div
+            *ngIf="
+              !addForms.get('username')!.valid &&
+              addForms.get('username')!.touched
+            "
+          >
+            <p
+              class="error"
+              *ngIf="addForms.get('username')!.errors!['required']"
+            >
+              *UserName is required.
+            </p>
+          </div>
+        </div>
 
-<div class="fields">
-  <div class="reg">
-   
-        <form class="inputs" [formGroup]="addForms" (ngSubmit)="addUser()">
+        <div class="email">
+          <p>Email</p>
 
-           <div class="form1">
-            <div class="username">
-                <p>Username</p>
-                <input type="text" formControlName="username" name="username" placeholder="Enter your username" >
-                <div *ngIf="!addForms.get('username')!.valid && addForms.get('username')!.touched">
-                    <p class="error" *ngIf="addForms.get('username')!.errors!['required']">
-                      *UserName is required.
-                    </p>
-                  </div>
-            </div>
-    
-            <div class="email">
-                <p>Email</p>
-             
-             
-                <input type="email" formControlName="email" placeholder="Enter your email">
-                <div *ngIf="!addForms.get('email')!.valid && addForms.get('email')!.touched">
-                  <p class="error" *ngIf="addForms.get('email')!.errors!['required']">
-                    *email is required.
-                  </p>
-                </div>
-            </div>
-            
-            
-           </div>
-        
-    
-        <div class="pass">
-            <p>Password</p>
-            <input type="password" formControlName="password" placeholder="Enter your password">
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="Enter your email"
+          />
+          <div
+            *ngIf="
+              !addForms.get('email')!.valid && addForms.get('email')!.touched
+            "
+          >
+            <p class="error" *ngIf="addForms.get('email')!.errors!['required']">
+              *email is required.
+            </p>
+          </div>
+        </div>
 
-            <div *ngIf="!addForms.get('password')!.valid && addForms.get('password')!.touched">
-                <p class="error" *ngIf="addForms.get('password')!.errors!['special']">
-                  *password special character is required.
-                </p>
-              </div>
+        <p>Password</p> 
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password"
+        /> <br> <br>
+
+        <div
+          *ngIf="
+            !addForms.get('password')!.valid &&
+            addForms.get('password')!.touched
+          "
+        >
+          <p class="error" *ngIf="addForms.get('password')!.errors!['special']">
+            *password special character is required.
+          </p>
         </div>
 
         <button type="submit" class="reg-btn">Register</button>
-        </form>
+      </form>
 
-        <p class="para">Allready Register? Sign In here <a href="auth/login">Login</a> </p>
+      <p class="para">
+        Allready Register? Sign In here <a href="auth/login">Login</a>
+      </p>
+    </div>
+    <div class="login-image">
+
+      <img src="/assets/undraw_login_re_4vu2.svg" width="334px" height="445" alt="">
+
   </div>
 
-  <div class="reg-image">
-    <img src="/assets/undraw_maker_launch_re_rq81.svg" width="400px" alt="">
-</div>
-
-</div>
-
-
-
-
-
-
-
-
+  </div>
 </div>

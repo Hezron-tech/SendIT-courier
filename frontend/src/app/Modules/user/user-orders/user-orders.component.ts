@@ -14,6 +14,8 @@ export class UserOrdersComponent implements OnInit {
   email:string=''
   ordersreceived:any;
   orderssent:any;
+
+  
   orders$=this.store.select(getOrders)
 
   constructor(private router:Router,private store:Store, private route:ActivatedRoute) { }

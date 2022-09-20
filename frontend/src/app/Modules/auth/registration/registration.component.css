@@ -1,6 +1,6 @@
 
 .register{
-    background-color: white;
+    
     justify-content: center;
     align-items: center;
     
@@ -18,11 +18,11 @@
 }
 h4{
     text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-.form1{
-    display: flex;
-}
+
 .inputs{
     
     justify-content: space-evenly;
@@ -30,6 +30,9 @@ h4{
 }
 .reg{
     padding-top: 3rem;
+    background-color: #4057A9;
+    padding-right: 1rem;
+    border-radius: 15px;
 }
 .pass{
     padding-top: 3rem; 
@@ -42,40 +45,45 @@ h4{
 }
 .fields{
     align-items: center;
-    display: flex;
+    text-align: center;
     margin: auto;
-    height: 800px;
+    display: flex;
+    height: auto;
     box-sizing: border-box;
     margin: auto;
-  width: 50%;
-  border: 3px solid green;
-  padding: 10px;
+  width: auto;
+  border-radius: 15px;
+  margin: auto;
+width: 40%;
+background-color: rgb(136, 136, 42);
    
 
-}.email{
+}
+.email{
     margin-left: 2rem;
 }
 
 .inputs input{
-    width: 150px;
+    width: 200px;
     border-radius: 15px;
     padding: 7px;
     background-color: white;
 }
 
-.pass input{
+/* .pass input{
     width: 100%;
     border-radius: 15px;
     padding: 7px;
     background-color: white;
-}
+} */
 
 .reg-btn{
     background-color: #D0504F;
     padding: 8px;
-    border-radius: 5px;
+    border-radius: 15px;
     color:white;
     margin-top: 2rem;
+    width: 80%;
     
 }
 a{
@@ -111,4 +119,19 @@ input.ng-valid.ng-touched{
 .para{
     text-align: center;
     padding-top: 1rem;
+    padding-bottom: 2rem;
+    margin-left: 1rem;
+    font-size: 20px;
+    color: white;
+}
+
+placeholder{
+    padding: 1rem;
+    color:black;
+    font-weight: bold;
+}
+
+form p{
+    padding-top: 1rem;
+    justify-content: start;
 }

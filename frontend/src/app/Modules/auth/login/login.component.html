@@ -12,14 +12,15 @@
 
             <div class="form-control">
                 <p>Email</p>
-                <input type="email" ngModel name="email" required email #email="ngModel">
+                <input type="email" ngModel name="email" required email #email="ngModel" placeholder="Enter your Email">
                 <p class="error" *ngIf="!email.valid && email.touched"> *Please enter valid email!!</p>
                 <!-- <p class="error" *ngIf="!email.valid && email.touched>*Please enter valid email!!</p> -->
             </div>
 
             <div class="form-control">
                 <p>Password</p>
-                <input type="password" ngModel name="password" required>
+                <input type="password" ngModel name="password"  #password="ngModel" required placeholder="Enter your Password">
+                <p class="error" *ngIf="!password.valid && password.touched"> *Password is required</p>
                
             </div>
 

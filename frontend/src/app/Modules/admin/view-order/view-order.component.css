@@ -1,11 +1,13 @@
 .content{
    text-align: center;
-    display: flex;
-   
     margin-top: 2rem;
     text-align: center; 
   
     
+}
+.new{
+    display: flex;
+    text-align: center;
 }
 
 h2{
@@ -17,8 +19,9 @@ h2{
 
 p{
     color: white;
-    font-size: 20px;
+    font-size: 30px;
     padding-left: 2rem;
+   
 }
 
 .bt{
@@ -36,7 +39,7 @@ p{
 .con{
    
     text-align: center;
-    background-color: blueviolet;
+    background-color: rgb(136, 136, 42); 
     height: 400px;
     width: 800px;
     color: white;
@@ -48,4 +51,14 @@ p{
 .map{
    
     margin-left: 2rem;
+}
+span{
+    color: black;
+}
+
+button{
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: none;
 }

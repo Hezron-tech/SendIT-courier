@@ -1,6 +1,8 @@
 import { Request, RequestHandler, Response } from "express";
 import { v4 as uid } from "uuid";
+import { sqlConfig } from "../Config/config";
 import Connection from "../DatabaseHelpers/db";
+import mssql from "mssql";
 import { ParcelSchema } from "../Helpers/validators";
 const db = new Connection();
 
@@ -35,8 +37,7 @@ export const insertParcel = async (req: ExtendedRequest, res: Response) => {
 
     const { error, value } = ParcelSchema.validate(req.body);
     if (error) {
-      return res.status(500)
-      .json({ error: error.details[0].message });
+      return res.status(500).json({ error: error.details[0].message });
     }
     db.exec("insertUpdateParcel", {
       id,
@@ -73,12 +74,31 @@ export const getParcel: RequestHandler<{ id: string }> = async (req, res) => {
     if (!recordset[0]) {
       res.status(404).json({ message: "Parcel Not Found" });
     } else {
-      res.json(recordset);
+      res.json(recordset[0]);
     }
   } catch (error) {
     res.status(500).json({ error });
   }
 };
+
+// export const getParcel: RequestHandler<{ id: string }> = async (req, res) => {
+//   try {
+//     const id = req.params.id;
+//     const pool = await mssql.connect(sqlConfig);
+//     const project = await pool
+//       .request()
+//       .input("id", mssql.VarChar, id)
+//       .execute("singleParcel");
+//     const { recordset } = project;
+//     if (!project.recordset[0]) {
+//       res.json({ message: "Project Not Found" });
+//     } else {
+//       res.json(recordset[0]);
+//     }
+//   } catch (error) {
+//     res.json({ error });
+//   }
+// };
 
 export const updateParcel: RequestHandler<{ id: string }> = async (
   req,
@@ -156,8 +176,6 @@ export const deleteParcel: RequestHandler<{ id: string }> = async (
       // Procedure Way
       await db.exec("softDeleteParcel", { id });
       res.json({ message: "Parcel Deleted" });
-
-     
     }
   } catch (error: any) {
     res.json({ error });

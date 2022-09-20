@@ -1,8 +1,8 @@
 
  
- <div class="single-details" >
+ <div class="single-details" *ngIf="order$" | async as order>
 
-  <div class="content" *ngIf="order$" | async as order >
+  <div class="content" *ngFor="let ord of">
 
     <h2>Package details</h2>
 

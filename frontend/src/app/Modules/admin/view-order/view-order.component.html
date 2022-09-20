@@ -1,34 +1,39 @@
 <div class="single-details">
   <button class="back" (click)="goback()">Go back</button>
 
- <div class="con" *ngIf=" order$ | async as ord">
-  <h2>Package details</h2>
+  <div class="con" *ngIf=" order$ | async as ord">
+    <h2>Package details</h2>
     <div class="content" *ngFor="let ord of ord">
+      <div class="new">
         <div class="div1">
-          
-          <p>{{ord.PackageName}}</p>  
-          <p>Destination: {{ord.destination}}</p>
-          <p>Sender: {{ord.senderEmail}}</p>
-          <p>Receiver: {{ord.receiverEmail}}</p>
+
+          <p> Package Name :<span>{{ord.PackageName}}</span></p>
+          <p>Destination: <span>{{ord.destination}}</span> </p>
+          <p>Sender: <span>{{ord.senderEmail}}</span> </p>
+          <p>Receiver: <span>{{ord.receiverEmail}}</span> </p>
         </div>
-       <div class="div2">
-       
-        <p>price:{{ord.price}}</p>
-        <p>Weight:{{ord.weight}}</p>
-        <p>date {{ord.date}}</p>
-        <p>Status: {{ord.status}}</p>
-       </div>
-       <button  (click)="update(ord.id)"class="bt">Update status</button>
+        <div class="div2">
+
+          <p>price: <span>{{ord.price}}</span></p>
+          <p>Weight:<span>{{ord.weight}}</span> </p>
+          <p>date <span>{{ord.date}}</span> </p>
+          <p>Status: <span>{{ord.status}}</span></p>
+        </div>
       </div>
 
-     
-      
-     
-    
- </div>
- <div class="map">
-  <app-map></app-map>    
-</div>
- 
-  
+      <button (click)="update(ord.id)" class="bt">Update status</button>
+
+
+    </div>
+
+
+
+
+
+  </div>
+  <div class="map">
+    <app-map></app-map>
+  </div>
+
+
 </div>

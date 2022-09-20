@@ -28,10 +28,6 @@ const initialState: OrderState = {
   users:[]
 };
 
-
-
-
-
 const getOrderFeaturesState = createFeatureSelector<OrderState>('orders');
 
 export const getOrders = createSelector(
@@ -61,6 +57,7 @@ export const OrderReducer = createReducer(
     return { ...state, ordersErrror: action.error };
   }),
 
+
   // post orders/reducers
   on(Actions.SelectedId, (state, action): OrderState => {
     return { ...state, orderId: action.id };
@@ -71,6 +68,8 @@ export const OrderReducer = createReducer(
   on(Actions.AddOrderFailure, (state, action): OrderState => {
     return { ...state, error: action.error };
   }),
+
+
 
   //delete orders
   on(Actions.DeleteOrderSuccess, (state, action): OrderState => {
