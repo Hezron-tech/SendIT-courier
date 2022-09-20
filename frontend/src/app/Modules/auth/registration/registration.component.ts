@@ -57,9 +57,6 @@ export class RegistrationComponent implements OnInit {
      );
       }
     }
-   
-   
-    
   checkPassword(control:FormControl){
     const value=control.value
      const special=/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]+/.test(value)

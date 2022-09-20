@@ -13,7 +13,7 @@ routers.get('/sent/:senderEmail',sentParcels )
 routers.get('/:id' ,getParcel )
 routers.delete("/delete/:id", deleteParcel);
 routers.put("/updatestatus/:id",  updateDelivered);
-routers.post("/update/:id",updateParcel);
+routers.post("/update/:id",VerifyToken,updateParcel);
 routers.post("/status/:id",statusParcel);
 
 

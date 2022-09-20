@@ -10,6 +10,7 @@ import { Users } from '../Interface/user';
 export class OrderService {
 
 baseurl='http://localhost:5000'
+statusUrl='http://localhost:5000'
 token= localStorage.getItem('token') as string
   
   constructor(private http: HttpClient) { }
@@ -40,7 +41,9 @@ token= localStorage.getItem('token') as string
   }
 
 
- 
+ updateStatus(id:string):Observable<Orders[]>{
+  return this.http.put<Orders[]>(`${this.statusUrl}/parcel/updatestatus/${id}`,id)
+ }
 
 
   }

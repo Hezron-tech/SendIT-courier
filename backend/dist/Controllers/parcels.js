@@ -23,7 +23,8 @@ const insertParcel = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const { PackageName, destination, senderEmail, receiverEmail, lat, long, weight, price, date, } = req.body;
         const { error, value } = validators_1.ParcelSchema.validate(req.body);
         if (error) {
-            return res.status(500).json({ error: error.details[0].message });
+            return res.status(500)
+                .json({ error: error.details[0].message });
         }
         db.exec("insertUpdateParcel", {
             id,

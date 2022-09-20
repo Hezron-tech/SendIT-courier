@@ -8,6 +8,7 @@ import { OrderState, getOrders } from 'src/app/Modules/admin/Redux/Reducers/orde
 import * as Actions from '../Redux/Actions/orderActions'
 import { map, Observable } from 'rxjs';
 import { Orders } from 'src/app/Interface/order';
+import { OrderService } from 'src/app/Services/order.service';
 
 @Component({
   selector: 'app-view-order',
@@ -19,7 +20,7 @@ export class ViewOrderComponent implements OnInit {
   id!:string
   order$ = new Observable<Orders[]>()
 
-  constructor(private route:ActivatedRoute,private store:Store<OrderState>,private router:Router) { }
+  constructor(private route:ActivatedRoute,private store:Store<OrderState>,private router:Router,private orderService:OrderService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((param)=>{
@@ -41,12 +42,17 @@ export class ViewOrderComponent implements OnInit {
       })
       
     )
-    // this.store.dispatch(Actions.SelectedId({id:this.id}))
-    // this.order$.subscribe(order=>{
-    //   console.log(order);
+  
+  }
+  update(id:string){
+    this.orderService.updateStatus(id).subscribe( res=>{
+
+      this.store.dispatch(Actions.LoadOrders())
       
-    // })
-    
+      console.log(res);
+
+      
+    })
 
   }
 

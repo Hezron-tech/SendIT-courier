@@ -19,8 +19,8 @@ exports.ParcelSchema = joi_1.default.object({
     senderEmail: joi_1.default.string().required(),
     receiverEmail: joi_1.default.string().required(),
     destination: joi_1.default.string().required(),
-    lat: joi_1.default.string().required(),
-    long: joi_1.default.string().required(),
+    // lat:Joi.string().required(),
+    // long:Joi.string().required(),
     weight: joi_1.default.number().required(),
     price: joi_1.default.number().required(),
     date: joi_1.default.string().required()

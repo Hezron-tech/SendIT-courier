@@ -1,4 +1,4 @@
-import { StatusOrderComponent } from './status-order/status-order.component';
+
 
 import { ViewOrderComponent } from './view-order/view-order.component';
 import { AllOrdersComponent } from './all-orders/all-orders.component';
@@ -13,9 +13,9 @@ const routes: Routes = [
     
     {path:'create', component:CreateOrdersComponent},
     {path:'all', component:AllOrdersComponent},
-    {path:'view/:id',component:ViewOrderComponent},
+    {path:'view/:id',component:ViewOrderComponent}
    
-    {path: 'status',component:StatusOrderComponent}
+    
   ] 
   
   }

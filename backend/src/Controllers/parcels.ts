@@ -35,7 +35,8 @@ export const insertParcel = async (req: ExtendedRequest, res: Response) => {
 
     const { error, value } = ParcelSchema.validate(req.body);
     if (error) {
-      return res.status(500).json({ error: error.details[0].message });
+      return res.status(500)
+      .json({ error: error.details[0].message });
     }
     db.exec("insertUpdateParcel", {
       id,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { getOrders } from '../../admin/Redux/Reducers/orderReducer';
 import * as Actions from '../../admin/Redux/Actions/orderActions'
@@ -16,7 +16,7 @@ export class UserOrdersComponent implements OnInit {
   orderssent:any;
   orders$=this.store.select(getOrders)
 
-  constructor(private router:Router,private store:Store) { }
+  constructor(private router:Router,private store:Store, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -35,17 +35,18 @@ export class UserOrdersComponent implements OnInit {
         
         
       });
-     
-     
-      
+    
       
       console.log(this.orderssent);
       
     });
   ;
   }
-  details(){
-this.router.navigate(['user/order/details'])
+details(id:string){
+  this.store.dispatch(Actions.SelectedId({id}));
+this.router.navigate([`/user/order/details/${id}`],{
+  relativeTo:this.route
+})
   }
 
 

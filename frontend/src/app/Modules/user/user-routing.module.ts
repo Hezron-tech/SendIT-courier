@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '', canActivate:[GuardGuard],
     children: [
       { path: 'orders', component: UserOrdersComponent },
-      { path: 'order/details', component: UserDetailsComponent },
+      { path: 'order/details/:id', component: UserDetailsComponent },
     ],
   },
   

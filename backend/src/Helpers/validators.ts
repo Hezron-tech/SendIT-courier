@@ -20,8 +20,8 @@ export const ParcelSchema= Joi.object({
     senderEmail:Joi.string().required(),
     receiverEmail:Joi.string().required(),
     destination:Joi.string().required(),
-    lat:Joi.string().required(),
-    long:Joi.string().required(),
+    // lat:Joi.string().required(),
+    // long:Joi.string().required(),
     weight:Joi.number().required(),
     price:Joi.number().required(),
     date:Joi.string().required()

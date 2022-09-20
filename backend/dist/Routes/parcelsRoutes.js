@@ -11,6 +11,6 @@ routers.get('/sent/:senderEmail', parcels_1.sentParcels);
 routers.get('/:id', parcels_1.getParcel);
 routers.delete("/delete/:id", parcels_1.deleteParcel);
 routers.put("/updatestatus/:id", parcels_1.updateDelivered);
-routers.post("/update/:id", parcels_1.updateParcel);
+routers.post("/update/:id", verify_1.VerifyToken, parcels_1.updateParcel);
 routers.post("/status/:id", parcels_1.statusParcel);
 exports.default = routers;
