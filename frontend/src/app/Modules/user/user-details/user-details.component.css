@@ -1,28 +1,41 @@
 .content{
     box-sizing: border-box;
 
-    background-color: blueviolet;
-    height: 500px;
-    width: 400px;
+   
+    height: 100%;
+    width: 100%;
     margin: auto;
-    margin-top: 2rem;
+    padding: 1rem;
+    /* margin-top: 2rem; */
     
 }
 
 h2{
     text-align: center;
     color: white;
-    padding-top: 1rem;
+    /* padding-top: 1rem; */
 }
 
 
 p{
     color: white;
-    font-size: 20px;
-    padding-left: 2rem;
+    font-size: 25px;
+    /* padding-left: 2rem; */
 }
 
 .user{
-    margin-top: 2rem;
-    margin-left: 2rem;
+    /* margin-top: 2rem;
+    margin-left: 2rem; */
+}
+.single-details{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    padding: 1rem;
+    background-color: rgb(83, 77, 77);
+}
+
+p span{
+    margin-left: 1rem;
+    font-size: 20px;
 }

@@ -29,6 +29,7 @@ p{
 input{
     border-radius: 15px;
     margin-bottom: 1rem;
+    padding: 0.3rem;
 
 }
 
@@ -36,7 +37,7 @@ input{
     height: 455px;
     background-color: #4057A9;
     width: 334px;
-    border-radius: 15px;
+    border-radius: 15px 0px 0px 15px;
     padding-top: 1rem;
     margin-left: 4rem;
 }
@@ -47,13 +48,16 @@ button{
     margin-top: 1rem;
     font-size: 20px;
     padding: 0.5rem;
+    background-color: rgb(136, 136, 42);
 
     margin-bottom: 2rem;
+    border: none;
+    color: #fff;
 }
 
 .login-image{
     background-color: rgb(136, 136, 42);
-    border-radius: 15px;
+    border-radius: 0px 15px  15px 0px;
 }
 
 a{

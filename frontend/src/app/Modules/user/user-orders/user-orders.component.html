@@ -32,7 +32,16 @@
                 <tr>
                   
                 </tr> 
+
+               
                 </table>
+                <div ngClass="noParcels" *ngIf="orderssent.length<=0">
+                  <div ngClass="head">
+                    <h1>You have no order sent!!</h1>
+
+                  </div>
+
+                </div>
         </div>
         
         
@@ -63,6 +72,13 @@
                   
                 </tr> 
                 </table>
+                <div ngClass="noParcels" *ngIf="ordersreceived.length<=0">
+                  <div ngClass="hea">
+                    <h1>You have no order received!!</h1>
+
+                  </div>
+
+                </div>
         </div>
       
         </div>

@@ -59,15 +59,14 @@ background-color: rgb(136, 136, 42);
    
 
 }
-.email{
-    margin-left: 2rem;
-}
+
 
 .inputs input{
-    width: 200px;
+  
     border-radius: 15px;
     padding: 7px;
     background-color: white;
+    width: 80%;
 }
 
 /* .pass input{
@@ -78,12 +77,13 @@ background-color: rgb(136, 136, 42);
 } */
 
 .reg-btn{
-    background-color: #D0504F;
+    background-color: rgb(136, 136, 42);
     padding: 8px;
     border-radius: 15px;
     color:white;
     margin-top: 2rem;
     width: 80%;
+    border: none;
     
 }
 a{
@@ -134,4 +134,5 @@ placeholder{
 form p{
     padding-top: 1rem;
     justify-content: start;
+    color: white;
 }

@@ -1,25 +1,24 @@
+<div class="single-details">
 
- 
- <div class="single-details" *ngIf="order$" | async as order>
-
-  <div class="content" *ngFor="let ord of">
+  <div class="content" *ngFor="let ord of order$ | async as orders">
 
     <h2>Package details</h2>
 
-    <p>Name</p>
-    <p>Package Id:</p>
-    <p>Destination:</p>
-    <p>Sender:</p>
-    <p>Receiver:</p>
-    <p>price:</p>
-    <p>Weight:</p>
+    <p>Name:<span>{{ord.PackageName}}</span> </p>
+    
+    <p>Destination:<span>{{ord.destination}}</span></p>
+    <p>Sender:<span>{{ord.senderEmail}}</span> </p>
+    
+    <p>Price:<span>{{ord.price}}</span> </p>
+  
+    <p>Date Sent:<span>{{ord.date}}</span> </p>
 
-    <p>date</p>
+  </div>
 
+  <div class="map">
+  <app-map></app-map>
   </div>
 
 
 
 </div>
-
-
