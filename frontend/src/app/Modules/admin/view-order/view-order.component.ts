@@ -44,6 +44,8 @@ export class ViewOrderComponent implements OnInit {
     )
   
   }
+
+  
   update(id:string){
     this.orderService.updateStatus(id).subscribe( res=>{
 

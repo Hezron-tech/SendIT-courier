@@ -11,6 +11,7 @@ import { LoginService } from 'src/app/Services/login.service';
 })
 export class LoginComponent implements OnInit {
   @ViewChild ('form') form!:NgForm;
+  error:any
   constructor(private loginService:LoginService,private router:Router) {
   
    }
@@ -44,10 +45,8 @@ export class LoginComponent implements OnInit {
       else{
         this.router.navigate(['/user/orders'])
       }
-      
-     
-     
     })
+   
  
    
     
