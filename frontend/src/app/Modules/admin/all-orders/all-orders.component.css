@@ -51,45 +51,22 @@
     background-color: white;
     font-weight: bold;
 }
-form.search input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 70%;
-    background: #f1f1f1;
 
-  }
-  
-  form.search button {
-    float: left;
-    width: 30%;
-    padding: 10px;
-    background: #2196F3;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
-    cursor: pointer;
-    border-radius: 15px
-  }
-  
-  form.search button:hover {
-    background: #0b7dda;
-  }
-  
-  form.search::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-  form.search input{
-    border-radius: 15px;
-  }
+input{
+  padding: 1rem;
+  background-color: #ffff;
+ 
+  border-radius: 15px;
 
+}
+placeholder{
+  font-size: 15px;
+  font-weight: bold;
+}
   table{
     background-color:white;
     margin-top: 1rem;
+    color: black;
   }
 
   th{

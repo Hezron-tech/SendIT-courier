@@ -16,7 +16,7 @@
             <li>Services</li>
            
             
-            <li> <button (click)="getStarted()"class="started">Get Started</button></li>
+            <li> <button (click)="getStarted()"  *ngIf="!authService.isLoggedin()"  class="started">Get Started</button></li>
             <li> <button (click)="logout()" *ngIf="authService.isLoggedin()" class="log">Logout</button> </li>
 
         </ul>
