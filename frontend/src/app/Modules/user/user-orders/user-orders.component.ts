@@ -14,6 +14,7 @@ export class UserOrdersComponent implements OnInit {
   email:string=''
   ordersreceived:any;
   orderssent:any;
+  p:number =1;
 
   
   orders$=this.store.select(getOrders)

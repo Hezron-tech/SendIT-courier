@@ -11,6 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { environment } from 'src/environments/environment';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     UserRoutingModule,
     SharedModule,
+    NgxPaginationModule,
     StoreModule.forFeature('orders', OrderReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forFeature([OrderEffectsService])

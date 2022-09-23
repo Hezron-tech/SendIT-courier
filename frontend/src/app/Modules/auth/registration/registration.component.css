@@ -136,3 +136,7 @@ form p{
     justify-content: start;
     color: white;
 }
+
+.error{
+    color: red;
+}

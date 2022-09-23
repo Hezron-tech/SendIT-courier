@@ -1,7 +1,8 @@
 <div class="order1">
 
    <div class="head">
-    <h1>Welcome User</h1>
+    <h1>Welcome</h1>
+    
    
    </div>
     <div class="user">
@@ -20,7 +21,7 @@
                   <th> Details</th>
         
                 </tr>
-                <tr *ngFor="let order of orderssent">
+                <tr *ngFor="let order of orderssent | paginate:{itemsPerPage:3,currentPage:p}">
                   <td>{{order.PackageName}}</td>
                   <td>{{order.destination}}</td>
                   <td>{{order.receiverEmail}}</td>
